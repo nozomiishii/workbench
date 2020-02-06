@@ -1,7 +1,7 @@
-const os = require("os");
+const EventEmitter = require('events');
+const emitter = new EventEmitter();
 
-let total = os.totalmem();
-let free = os.freemem();
+emitter.on("message", ()=> console.log('message'));
 
-console.log(`total: ${total}`);
-console.log(`free: ${free}`);
+console.log(emitter);
+emitter.emit("message");
