@@ -1,7 +1,4 @@
-const EventEmitter = require('events');
-const emitter = new EventEmitter();
+const heyYou = require('doing-well');
 
-emitter.on("message", ()=> console.log('message'));
+heyYou.doingWell('nozomi');
 
-console.log(emitter);
-emitter.emit("message");

@@ -17,7 +17,11 @@
   },
   "homepage": "https://github.com/nozomiishii/workbench#readme",
   "dependencies": {
+    "doing-well": "^1.0.2",
     "express": "^4.17.1",
     "mongoose": "^5.8.11"
+  },
+  "devDependencies": {
+    "jshint": "^2.11.0"
   }
 }
