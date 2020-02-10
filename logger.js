@@ -1,1 +1,4 @@
-module.exports.log = msg => console.log(msg);
+module.exports = (req, res, next)=>{
+  console.log('logging..');
+  next();
+} 

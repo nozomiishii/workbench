@@ -1,8 +1,12 @@
 const express = require("express");
+const logger = require('./logger');
 const app = express();
 const Joi = require('joi');
 
-app.use(express.json());
+// app.use(express.json());
+
+app.use(logger);
+
 
 const sex = [
   { id: 1, name: "pussy" },
