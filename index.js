@@ -17,14 +17,23 @@ const Course = mongoose.model('Course', courseSchema);
 
 async function createCourse(){
   const course = new Course({
-    name: "dance",
-    teacher: "nozomi",
-    tags: ["pop", "hit", "wave"],
+    name: "sex",
+    author: "midori",
+    tags: ["juicy", "white", "dripping"],
     isPublished: true
-  })
-  
+  }) 
   const result = await course.save();
   console.log(result);
 }
 
-createCourse(); 
+async function getCourse(){
+  const courses = await Course
+    .find({isPublished: true})
+    .limit(3)
+    .sort({name: 1});
+  console.log(courses);
+}
+
+
+// createCourse();
+getCourse();
