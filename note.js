@@ -1,3 +1,3 @@
-const getNote = ()=>{ return console.log('your notes...')};
+const getNote = ()=>{ return 'my pussy...'};
 
 module.exports = getNote;
