@@ -9,7 +9,12 @@ const keyValue = process.argv[2];
 yargs.command({
   command: 'add',
   describe: 'Add a new note',
-  handler: function(){
+  builder: {
+    title: {
+      describe: 'note title'
+    }
+  },
+  handler: function(argv){
     console.log('adding new note')
   }
 })
