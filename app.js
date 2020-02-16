@@ -11,7 +11,8 @@ yargs.command({
   describe: 'Add a new note',
   builder: {
     title: {
-      describe: 'note title'
+      describe: 'note title',
+      demandOption: true
     }
   },
   handler: function(argv){
