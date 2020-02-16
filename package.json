@@ -1,0 +1,19 @@
+{
+  "name": "workbench",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nozomiishii/workbench.git"
+  },
+  "author": "nozomi ishii",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nozomiishii/workbench/issues"
+  },
+  "homepage": "https://github.com/nozomiishii/workbench#readme"
+}
