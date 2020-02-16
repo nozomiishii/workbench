@@ -9,8 +9,32 @@ const keyValue = process.argv[2];
 yargs.command({
   command: 'add',
   describe: 'Add a new note',
-  hander: function(){
+  handler: function(){
     console.log('adding new note')
+  }
+})
+
+yargs.command({
+  command: 'remove',
+  describe: 'remove the note',
+  handler: function(){
+    console.log('removeing the note')
+  }
+})
+
+yargs.command({
+  command: 'list',
+  describe: 'listing the note',
+  handler: function(){
+    console.log('here is the note list')
+  }
+})
+
+yargs.command({
+  command: 'read',
+  describe: 'reading note',
+  handler: function(){
+    console.log('16th feb, i just saw a pussy. it was rad')
   }
 })
 
