@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const msg = __webpack_require__(/*! ./script2 */ \"./src/script2.js\");\n\nalert(msg); \n\n\n//# sourceURL=webpack:///./src/script1.js?");
+eval("var msg = __webpack_require__(/*! ./script2 */ \"./src/script2.js\");\n\nalert(msg);\n\n//# sourceURL=webpack:///./src/script1.js?");
 
 /***/ }),
 
@@ -104,7 +104,7 @@ eval("const msg = __webpack_require__(/*! ./script2 */ \"./src/script2.js\");\n\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("module.exports = 'dripping wet';\n\n\n//# sourceURL=webpack:///./src/script2.js?");
+eval("var mssg = 'dripping wet';\nmodule.exports = mssg;\n\n//# sourceURL=webpack:///./src/script2.js?");
 
 /***/ })
 

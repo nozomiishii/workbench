@@ -1,1 +1,3 @@
-module.exports = 'dripping wet';
+const mssg = 'dripping wet';
+
+module.exports = mssg;
