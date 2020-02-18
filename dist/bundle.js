@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/script1.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -105,6 +105,17 @@ eval("var msg = __webpack_require__(/*! ./script2 */ \"./src/script2.js\");\n\na
 /***/ (function(module, exports) {
 
 eval("var mssg = 'dripping wet';\nmodule.exports = mssg;\n\n//# sourceURL=webpack:///./src/script2.js?");
+
+/***/ }),
+
+/***/ 0:
+/*!***************************************!*\
+  !*** multi ./src/script1.js build.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("__webpack_require__(/*! /Users/nozomi/code/non-b3/workbench/src/script1.js */\"./src/script1.js\");\n!(function webpackMissingModule() { var e = new Error(\"Cannot find module 'build.js'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }());\n\n\n//# sourceURL=webpack:///multi_./src/script1.js_build.js?");
 
 /***/ })
 
