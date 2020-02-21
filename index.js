@@ -1,3 +1,13 @@
-const email = "nozomiishii.jp@gmail.com";
+console.log('yay')
 
-console.log(email[0]);
+const ps = document.querySelectorAll('p');
+
+
+ps.forEach(p => {
+  console.log(p.textContent);
+  if(p.textContent == 'error'){
+    p.classList.add('error');
+  }else{
+    p.classList.add('success');
+  }
+});
