@@ -1,13 +1,13 @@
-console.log('yay')
-
-const ps = document.querySelectorAll('p');
-
-
-ps.forEach(p => {
-  console.log(p.textContent);
-  if(p.textContent == 'error'){
-    p.classList.add('error');
-  }else{
-    p.classList.add('success');
+const ul = document.querySelector('ul');
+ul.addEventListener('click', e =>{
+  if(e.target.tagName === 'LI'){
+    e.target.remove();
   }
-});
+})
+
+
+const p = document.querySelector('p');
+
+p.addEventListener('copy', e =>{
+  console.log('nice pussy');
+})
