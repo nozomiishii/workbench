@@ -5,28 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
-    .success{
-      color: rgb(177, 247, 96);
-    }
-    .error{
-      color: rgb(201, 11, 11);
-    }
   </style>
 </head>
 <body>
-  <p id="lady">
-    大丈夫！気にしないで
-    <span style="display: none;">
-      (気にしてほしい)
-    </span>
-  </p>
+  <ul>
+    <li>chun-li</li>
+    <li>niku</li>
+    <li>rola</li>
+    <li>bae</li>
+  </ul>
   <script>
-    const p = document.querySelector('p');
-    console.log(p.innerText);
-    //大丈夫！気にしないで
-    console.log(p.textContent);
-    //大丈夫！気にしないで
-    //(気にしてほしい)
+    const items = document.querySelectorAll('li');
+    items.forEach(item =>{
+      item.addEventListener('click', e =>{
+        console.log(e);
+      })
+    })
+
   </script>
 </body>
 </html>
