@@ -7,3 +7,5 @@ var template = React.createElement("p", {
 var appRoot = document.getElementById('app');
 
 ReactDOM.render(template, appRoot);
+
+
