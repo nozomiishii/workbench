@@ -1,0 +1,12 @@
+{
+  "name": "workbench",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:nozomiishii/workbench.git",
+  "author": "Nozomi Ishii <non.ankt@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1"
+  }
+}
