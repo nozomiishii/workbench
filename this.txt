@@ -1,0 +1,68 @@
+アロー関数とthis
+ーーー予備知識: eventListener、オブジェクトにふれていること
+
+とても悩んだところーーーーーーーーーーーーーーーーー
+
+let multiply;
+
+const multiplier = {
+  numbers: [2, 3, 4],
+  multiplyBy: 3,
+  multiply: () => {
+    const newArray = this.numbers.map(number => {
+      return number * this.multiplyBy;
+    });
+    return newArray;
+  }
+};
+
+console.log(multiplier.multiply());
+
+がなぜできないのか。
+
+イメージ方程式---------------------------------------
+const normal = function(){
+  return this;
+};
+
+obj.normal()
+  this === obj
+
+else
+  this === global
+
+ー　obj.normal()で呼ばれたときthisを束縛。ー
+
+
+
+結論ーーーーーーーーーーーーーーーー
+normal() はthisを呼び出したところで束縛する。
+arrow() は束縛しない。
+→　normal()にあたるまでずっと階層があがっていく。normalにあたらないとglobalスコープに行く
+
+ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+"JavaScriptでvarやletなどを付けずに宣言された変数はグローバルオブジェクトというオブジェクトのプロパティになる"
+
+name = "cat";
+つまり、
+global.name = "cat"
+のglobal.を省略したもの
+
+alert();
+これは、
+global.alert()
+のglobal.を省略したもの
+
+
+function speak(){
+　return "hi"
+}
+speak();
+これもじつは
+global.speak() の省略
+
+---------------------------------------
+
+そもそもthisとは
+
+

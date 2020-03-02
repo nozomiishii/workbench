@@ -4,17 +4,28 @@
 //   });
 //   return newArray;
 // };
-let multiply;
+// let multiply;
 
-const multiplier = {
-  numbers: [2, 3, 4],
-  multiplyBy: 3,
-  multiply: function() {
-    const newArray = this.numbers.map(number => {
-      return number * this.multiplyBy;
-    });
-    return newArray;
-  }
+// const multiplier = {
+//   numbers: [2, 3, 4],
+//   multiplyBy: 3,
+//   multiply: function() {
+//     const newArray = this.numbers.map(number => {
+//       return number * this.multiplyBy;
+//     });
+//     return newArray;
+//   }
+// };
+
+// console.log(multiplier.multiply());
+
+const nomal = function() {
+  return this;
 };
 
-console.log(multiplier.multiply());
+const arrow = () => {
+  return this;
+};
+
+console.log("nomal", nomal());
+console.log("arrow", arrow());
