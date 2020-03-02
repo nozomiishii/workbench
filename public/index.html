@@ -17,33 +17,6 @@
     ></script>
     <script src="scripts/app.js"></script> -->
 
-    <script>
-      name = "nozomi";
-
-      // const name = "nozomi";
-      // 名前を間違った日には処刑
-      console.log(this); //window{ name: 'nozomi'}
-      console.log(this.name); //nozomi
-
-      function normal() {
-        return this;
-      }
-      console.log("normal()", normal()); //window{ name: 'nozomi'}
-      const arrow = () => {
-        return this.name;
-      };
-
-      console.log("arrow()", arrow()); //nozomi
-
-      const ishii = {
-        arrow: arrow,
-        arrow2: () => {
-          return this.name;
-        }
-      };
-
-      console.log(ishii.arrow()); //nozomi
-      console.log(ishii.arrow2()); //nozomi
-    </script>
+    <script></script>
   </body>
 </html>
