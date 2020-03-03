@@ -1,24 +1,65 @@
 "use strict";
 
-// const multiply = () => {
-//   const newArray = this.numbers.map(number => {
-//     return number * this.multiplyBy;
-//   });
-//   return newArray;
-// };
-var multiply = void 0;
+console.log("app");
 
-var multiplier = {
-  numbers: [2, 3, 4],
-  multiplyBy: 3,
-  multiply: function multiply() {
-    var _this = this;
+var book = {
+  title: "sex is not jerkoff",
+  round: 3,
+  subtitle: "lick or lick more",
+  options: ["header", "more header"]
+};
 
-    var newArray = this.numbers.map(function (number) {
-      return number * _this.multiplyBy;
+var displayOptions = function displayOptions() {
+  if (book.options) {
+    var options = book.options.map(function (option) {
+      React.createElement(
+        "p",
+        null,
+        option
+      );
     });
-    return newArray;
+    console.log(options);
+    return options;
   }
 };
 
-console.log(multiplier.multiply());
+var template = React.createElement(
+  "div",
+  null,
+  React.createElement(
+    "h1",
+    null,
+    book.title
+  ),
+  book.subtitle ? React.createElement(
+    "p",
+    null,
+    book.subtitle
+  ) : undefined,
+  displayOptions()
+);
+
+var intro = React.createElement(
+  "div",
+  null,
+  React.createElement(
+    "h1",
+    null,
+    "nozomi ishii"
+  ),
+  React.createElement(
+    "p",
+    null,
+    "age: 28"
+  ),
+  React.createElement(
+    "p",
+    null,
+    "location: tokyo"
+  )
+);
+
+var appRoot = document.getElementById("app");
+
+ReactDOM.render(template, appRoot);
+// ReactDOM.render(intro, appRoot);
