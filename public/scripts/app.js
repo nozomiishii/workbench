@@ -1,26 +1,9 @@
 "use strict";
 
-console.log("app");
-
-var book = {
-  title: "sex is not jerkoff",
-  round: 3,
-  subtitle: "lick or lick more",
-  options: ["header", "more header"]
-};
-
-var displayOptions = function displayOptions() {
-  if (book.options) {
-    var options = book.options.map(function (option) {
-      React.createElement(
-        "p",
-        null,
-        option
-      );
-    });
-    console.log(options);
-    return options;
-  }
+var app = {
+  title: "Studing Coding",
+  subtitle: "p5.js and React are awesome",
+  options: ["one", "two"]
 };
 
 var template = React.createElement(
@@ -29,37 +12,24 @@ var template = React.createElement(
   React.createElement(
     "h1",
     null,
-    book.title
+    app.title
   ),
-  book.subtitle ? React.createElement(
+  app.subtitle && React.createElement(
     "p",
     null,
-    book.subtitle
-  ) : undefined,
-  displayOptions()
-);
-
-var intro = React.createElement(
-  "div",
-  null,
-  React.createElement(
-    "h1",
-    null,
-    "nozomi ishii"
+    app.subtitle
   ),
   React.createElement(
     "p",
     null,
-    "age: 28"
+    app.options.length > 0 ? "here are your options" : "No options"
   ),
   React.createElement(
-    "p",
+    Form,
     null,
-    "location: tokyo"
+    React.createElement("input", { type: "text" })
   )
 );
 
-var appRoot = document.getElementById("app");
-
-ReactDOM.render(template, appRoot);
-// ReactDOM.render(intro, appRoot);
+var root = document.getElementById("app");
+ReactDOM.render(template, root);

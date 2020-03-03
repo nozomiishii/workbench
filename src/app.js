@@ -1,39 +1,19 @@
-console.log("app");
-
-const book = {
-  title: "sex is not jerkoff",
-  round: 3,
-  subtitle: "lick or lick more",
-  options: ["header", "more header"]
+const app = {
+  title: "Studing Coding",
+  subtitle: "p5.js and React are awesome",
+  options: ["one", "two"]
 };
 
-const displayOptions = () => {
-  if (book.options) {
-    const options = book.options.map(option => {
-      <p>{option}</p>;
-    });
-    console.log(options);
-    return options;
-  }
-};
-
-var template = (
+const template = (
   <div>
-    <h1>{book.title}</h1>
-    {book.subtitle ? <p>{book.subtitle}</p> : undefined}
-    {displayOptions()}
+    <h1>{app.title}</h1>
+    {app.subtitle && <p>{app.subtitle}</p>}
+    <p>{app.options.length > 0 ? "here are your options" : "No options"}</p>
+    <Form>
+      <input type="text" />
+    </Form>
   </div>
 );
 
-const intro = (
-  <div>
-    <h1>nozomi ishii</h1>
-    <p>age: 28</p>
-    <p>location: tokyo</p>
-  </div>
-);
-
-var appRoot = document.getElementById("app");
-
-ReactDOM.render(template, appRoot);
-// ReactDOM.render(intro, appRoot);
+const root = document.getElementById("app");
+ReactDOM.render(template, root);
