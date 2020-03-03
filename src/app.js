@@ -9,9 +9,10 @@ const template = (
     <h1>{app.title}</h1>
     {app.subtitle && <p>{app.subtitle}</p>}
     <p>{app.options.length > 0 ? "here are your options" : "No options"}</p>
-    <Form>
-      <input type="text" />
-    </Form>
+    <form>
+      <input type="text" name="option" />
+      <button>Add option</button>
+    </form>
   </div>
 );
 
