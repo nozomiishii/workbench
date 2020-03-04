@@ -1,38 +1,44 @@
-class Person {
-  constructor(name = "Anonymous", age = 0) {
-    this.name = name;
-    this.age = age;
-  }
-  greeting() {
-    return `Hi, I am ${this.name} and ${this.age} years old`;
-  }
-}
-
-class Student extends Person {
-  constructor(name, age, major) {
-    super(name, age);
-    this.name = major;
-  }
-  hasMajor() {
-    return this.major;
+class Header extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>Indecision</h1>
+        <h2>Put your life in the hands of a computer</h2>
+      </div>
+    );
   }
 }
 
-class Traveler extends Person {
-  constructor(name, location = "tokyo") {
-    super(name);
-    this.location = location;
-  }
-  greeting() {
-    console.log("work");
-    let discription = super.greeting();
-    if (this.location) {
-      discription += ` from ${this.location}`;
-    }
-    return discription;
+class Action extends React.Component {
+  render() {
+    return (
+      <div>
+        <button>What should I do?</button>
+      </div>
+    );
   }
 }
 
-const nozomi = new Traveler("nozomi");
+class Options extends React.Component {
+  render() {
+    return <div>Options component here</div>;
+  }
+}
 
-console.log(nozomi.greeting());
+class AddOption extends React.Component {
+  render() {
+    return <div>AddOption component here</div>;
+  }
+}
+
+const jsx = (
+  <div>
+    <Header />
+    <Action />
+    <Options />
+    <AddOption />
+    <AddOption />
+  </div>
+);
+
+ReactDOM.render(jsx, document.getElementById("app"));
