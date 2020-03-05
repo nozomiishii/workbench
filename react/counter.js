@@ -2,21 +2,21 @@ let count = 0;
 
 const add = () => {
   count++;
-  console.log("adding");
+  console.log('adding');
   renderCounterApp();
 };
 const minus = () => {
   count--;
-  console.log("subtracting");
+  console.log('subtracting');
   renderCounterApp();
 };
 const reset = () => {
   count = 0;
-  console.log("reset");
+  console.log('reset');
   renderCounterApp();
 };
 
-const root = document.getElementById("app");
+const root = document.getElementById('app');
 
 const renderCounterApp = () => {
   const template = (

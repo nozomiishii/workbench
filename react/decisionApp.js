@@ -1,7 +1,7 @@
 const app = {
-  title: "Studing Coding",
-  subtitle: "p5.js and React are awesome",
-  options: ["one", "two"]
+  title: 'Studing Coding',
+  subtitle: 'p5.js and React are awesome',
+  options: ['one', 'two']
 };
 
 const onFormSubmit = e => {
@@ -11,7 +11,7 @@ const onFormSubmit = e => {
   if (option) {
     app.options.push(option);
     console.log(app.options);
-    e.target.elements.option.value = "";
+    e.target.elements.option.value = '';
   }
   renderApp();
 };
@@ -32,7 +32,7 @@ const renderApp = () => {
     <div>
       <h1>{app.title}</h1>
       {app.subtitle && <p>{app.subtitle}</p>}
-      <p>{app.options.length > 0 ? "here are your options" : "No options"}</p>
+      <p>{app.options.length > 0 ? 'here are your options' : 'No options'}</p>
       <p>{app.options.length}</p>
       <h1>List</h1>
       {app.options.map(opt => (
@@ -52,6 +52,6 @@ const renderApp = () => {
   ReactDOM.render(template, root);
 };
 
-const root = document.getElementById("app");
+const root = document.getElementById('app');
 
 renderApp();

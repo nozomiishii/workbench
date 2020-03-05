@@ -1,5 +1,5 @@
 class Person {
-  constructor(name = "Anonymous", age = 0) {
+  constructor(name = 'Anonymous', age = 0) {
     this.name = name;
     this.age = age;
   }
@@ -15,17 +15,16 @@ class Student extends Person {
   }
   hasMajor() {
     return this.major;
-
   }
 }
 
 class Traveler extends Person {
-  constructor(name, location = "tokyo") {
+  constructor(name, location = 'tokyo') {
     super(name);
     this.location = location;
   }
   greeting() {
-    console.log("work");
+    console.log('work');
     let discription = super.greeting();
     if (this.location) {
       discription += ` from ${this.location}`;
@@ -34,6 +33,6 @@ class Traveler extends Person {
   }
 }
 
-const nozomi = new Traveler("nozomi");
+const nozomi = new Traveler('nozomi');
 
 console.log(nozomi.greeting());
