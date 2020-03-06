@@ -30,7 +30,6 @@ const onMakeDecision = () => {
 const renderApp = () => {
   const template = (
     <div>
-      <h1>{app.title}</h1>
       {app.subtitle && <p>{app.subtitle}</p>}
       <p>{app.options.length > 0 ? 'here are your options' : 'No options'}</p>
       <p>{app.options.length}</p>
