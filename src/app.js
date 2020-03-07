@@ -10,6 +10,29 @@ class IndecisionApp extends React.Component {
     };
   }
 
+  componentDidMount() {
+    try {
+      console.log("componentDidMount");
+      const json = localStorage.getItem("options");
+      const options = JSON.parse(json);
+      if (options) {
+        this.setState(() => ({ options }));
+      }
+    } catch (e) {}
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.options.length !== this.state.options.length) {
+      console.log("componentDidUpdate");
+      const json = JSON.stringify(this.state.options);
+      localStorage.setItem("options", json);
+    }
+  }
+
+  componentWillUnmount() {
+    console.log("componentWillUnmount");
+  }
+
   handleDeleteOptions() {
     this.setState(() => ({ options: [] }));
   }
@@ -25,7 +48,6 @@ class IndecisionApp extends React.Component {
   }
 
   handleAddOptions(option) {
-    console.log(option);
     if (!option) {
       return "Enter valid value to add item";
     } else if (this.state.options.indexOf(option) > -1) {
@@ -54,7 +76,7 @@ class IndecisionApp extends React.Component {
   }
 }
 IndecisionApp.defaultProps = {
-  options: ["doggy", "anal", "threesome"]
+  options: []
 };
 
 const Header = props => {
@@ -82,6 +104,9 @@ const Action = props => {
 const Options = props => {
   return (
     <div>
+      {props.options.length === 0 && (
+        <p>Please add an option to get started!!</p>
+      )}
       Options component here
       {props.options.map(option => (
         <Option
@@ -123,7 +148,9 @@ class AddOption extends React.Component {
     const option = e.target.elements.option.value.trim();
     const error = this.props.handleAddOptions(option);
     this.setState(() => ({ error }));
-    e.target.elements.option.value = "";
+    if (!error) {
+      e.target.elements.option.value = "";
+    }
   }
   render() {
     return (
