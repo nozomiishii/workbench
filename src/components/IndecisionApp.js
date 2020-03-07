@@ -10,6 +10,11 @@ export default class IndecisionApp extends React.Component {
     options: [],
     selectedOption: undefined
   };
+
+  handleClearSelectedOption = () => {
+    console.log("click!!");
+    this.setState(() => ({ selectedOption: undefined }));
+  };
   handleDeleteOptions = () => {
     this.setState(() => ({ options: [] }));
   };
@@ -21,8 +26,9 @@ export default class IndecisionApp extends React.Component {
   };
   makeDicision = () => {
     const randomNum = Math.floor(Math.random() * this.state.options.length);
+    const option = this.state.options[randomNum];
     this.setState(() => ({
-      selectedOption: this.state.options[randomNum]
+      selectedOption: option
     }));
   };
   handleAddOptions = option => {
@@ -71,7 +77,10 @@ export default class IndecisionApp extends React.Component {
           handleDeleteOption={this.handleDeleteOption}
         />
         <AddOption handleAddOptions={this.handleAddOptions} />
-        <OptionModal selectedOption={this.state.selectedOption} />
+        <OptionModal
+          selectedOption={this.state.selectedOption}
+          handleClearSelectedOption={this.handleClearSelectedOption}
+        />
       </div>
     );
   }
