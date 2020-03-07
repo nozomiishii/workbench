@@ -76,7 +76,7 @@ class IndecisionApp extends React.Component {
   }
 }
 IndecisionApp.defaultProps = {
-  options: []
+  options: ["pussy", "dick", "threesome"]
 };
 
 const Header = props => {
