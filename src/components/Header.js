@@ -9,7 +9,7 @@ const Header = props => {
   );
 };
 Header.defaultProps = {
-  title: "Horny slut"
+  title: "Indecision"
 };
 
 export default Header;
