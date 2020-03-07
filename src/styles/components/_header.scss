@@ -1,18 +1,18 @@
 .header {
-  background: rgba(17, 16, 15, 0.7);
+  background: $off-black;
   color: white;
-  margin-bottom: 4.8rem;
-  padding: 1.6rem 0;
+  margin-bottom: $xl-size;
+  padding: $m-size 0;
 }
 
 .header__title {
-  font-size: 3.2rem;
+  font-size: $l-size;
   margin: 0;
 }
 
 .header__subtitle {
-  color: rgba(239, 255, 8, 0.932);
-  font-size: 1.6rem;
+  color: $gold;
+  font-size: $m-size;
   font-weight: 500;
   margin: 0;
 }
