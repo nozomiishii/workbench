@@ -1,3 +1,4 @@
+// big-button
 .big-button {
   background: $gold;
   border: none;
@@ -12,4 +13,22 @@
 
 .big-button:disabled {
   opacity: 0.5;
+}
+
+// button
+.button {
+  background: $gold;
+  border: none;
+  border-bottom: 0.3rem solid darken($gold, 10%);
+  color: white;
+  font-weight: 500;
+  padding: $s-size;
+}
+
+// bem
+.button--link {
+  background: none;
+  border: none;
+  color: $pink;
+  padding: 0;
 }
