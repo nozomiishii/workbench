@@ -1,0 +1,14 @@
+.option {
+  border-bottom: 0.1rem solid lighten($light-black, 10%);
+  display: flex;
+  justify-content: space-between;
+  padding: $l-size $m-size;
+}
+
+.option__text {
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+  word-break: break-all;
+}
