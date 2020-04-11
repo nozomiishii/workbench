@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "validator": "^13.0.0"
+    "validator": "^13.0.0",
+    "yargs": "^15.3.1"
   },
   "devDependencies": {},
   "scripts": {
