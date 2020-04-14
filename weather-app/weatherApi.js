@@ -8,13 +8,13 @@ const weatherApi = (longitude, latitude, callback) => {
   )}`;
   const url = api + access_key + query;
   console.log(url);
-  request({ url: url, json: true }, (error, response) => {
+  request({ url, json: true }, (error, { body }) => {
     if (error) {
       callback("unable to connect to location service", undefined);
-    } else if (response.body.error) {
+    } else if (body.error) {
       callback("unable to find location. try another search.", undefined);
     } else {
-      const { temperature } = response.body.current;
+      const { temperature } = body.current;
       callback(undefined, temperature);
     }
   });

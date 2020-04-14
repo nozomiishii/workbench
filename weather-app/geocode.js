@@ -7,15 +7,15 @@ const geocode = (address, callback) => {
 
   const url = api + encodeURIComponent(address) + ".json" + access_token;
 
-  request({ url: url, json: true }, (error, response) => {
+  request({ url, json: true }, (error, { body }) => {
     if (error) {
       callback("unable to connect to location service", undefined);
-    } else if (response.body.features.length === 0) {
+    } else if (body.features.length === 0) {
       callback("unable to find location. try another search.", undefined);
     } else {
       callback(undefined, {
-        longitude: response.body.features[0].center[0],
-        latitude: response.body.features[0].center[1],
+        longitude: body.features[0].center[0],
+        latitude: body.features[0].center[1],
       });
     }
   });
