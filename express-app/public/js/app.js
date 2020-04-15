@@ -11,7 +11,7 @@ form.addEventListener("submit", (e) => {
   //   "http://api.weatherstack.com/current?access_key=4534b4c0d66c943670b34e593e5a0d90";
 
   const address = `?address=${e.target.location.value}`;
-  const api = `http://localhost:3000/weather`;
+  const api = `/weather`;
 
   const url = api + address;
   message.textContent = "loading...";
