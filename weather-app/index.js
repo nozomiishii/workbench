@@ -1,5 +1,5 @@
 const geocode = require("./geocode");
-const weatherApi = require("./weatherApi");
+const forcast = require("./forcast");
 
 const location = process.argv[2];
 
@@ -12,7 +12,7 @@ if (!location) {
     if (error) {
       return console.error(error);
     }
-    weatherApi(longitude, latitude, (error, response) => {
+    forcast(longitude, latitude, (error, response) => {
       if (error) {
         return console.error(error);
       }

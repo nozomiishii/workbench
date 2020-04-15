@@ -1,6 +1,8 @@
 const path = require("path");
 const express = require("express");
 const hbs = require("hbs");
+const geocode = require("./utils/geocode");
+const forcast = require("./utils/forcast");
 
 const app = express();
 
@@ -34,11 +36,31 @@ app.get("/weather", (req, res) => {
     });
   }
 
-  console.log(req.query);
-  res.send({
-    name: req.query.address,
-    temperture: 27,
+  geocode(req.query.address, (error, { longitude, latitude }) => {
+    if (error) {
+      return res.send({
+        error: "address is invaild",
+      });
+    }
+
+    forcast(latitude, latitude, (error, response) => {
+      if (error) {
+        return res.send({
+          error: "address is invaild",
+        });
+      }
+      res.send({
+        name: req.query.address,
+        temperture: response,
+      });
+    });
   });
+
+  // console.log(req.query);
+  // res.send({
+  //   name: req.query.address,
+  //   temperture: 27,
+  // });
 });
 
 app.get("*", (req, res) => {
