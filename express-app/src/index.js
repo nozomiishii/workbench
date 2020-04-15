@@ -36,14 +36,14 @@ app.get("/weather", (req, res) => {
     });
   }
 
-  geocode(req.query.address, (error, { longitude, latitude }) => {
+  geocode(req.query.address, (error, { longitude, latitude } = {}) => {
     if (error) {
       return res.send({
         error: "address is invaild",
       });
     }
 
-    forcast(latitude, latitude, (error, response) => {
+    forcast(longitude, latitude, (error, response) => {
       if (error) {
         return res.send({
           error: "address is invaild",

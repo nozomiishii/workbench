@@ -11,10 +11,12 @@
 
 <body>
   {{>header}}
-  <h1>{{title}}</h1>
-  <h1>{{name}}</h1>
-  <img src="/image/sample.png" alt="image" />
-  {{>footer}}
+
+  <form>
+    <input name="location" type="text" placeholder="location">
+    <button>submit</button>
+  </form>
+  <div id="message"></div>
   <script src="/js/app.js"></script>
 </body>
 
