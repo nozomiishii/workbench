@@ -27,7 +27,7 @@ MongoClient.connect(
         if (error) {
           return console.log("unable to insert taskes");
         }
-        console.log(result);
+        // console.log(result);
         console.log(result.ops);
       }
     );
