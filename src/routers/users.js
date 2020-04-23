@@ -12,13 +12,28 @@ router.post("/users", async (req, res) => {
   }
 });
 
+router.post("/users/signup", async (req, res) => {
+  const user = new User(req.body);
+  if (!user) {
+    try {
+      await user.save();
+      res.status(201).send(user);
+    } catch (err) {
+      console.error(err);
+      res.status(400).send();
+    }
+  }
+  redirect("/users/login");
+});
+
 router.post("/users/login", async (req, res) => {
   try {
     const user = await User.findByCredentials(
       req.body.email,
       req.body.password
     );
-    res.send(user);
+    const token = await user.generateAuthToken();
+    res.send({ user, token });
   } catch (e) {
     res.status(400).send();
   }
