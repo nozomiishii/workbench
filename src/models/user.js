@@ -40,6 +40,16 @@ const userSchema = new mongoose.Schema({
   ],
 });
 
+userSchema.method.toJSON = function () {
+  const user = this;
+  const userObject = user.toObject();
+
+  delete userObject.password;
+  delete userObject.takens;
+
+  return userObject;
+};
+
 userSchema.methods.generateAuthToken = async function () {
   const user = this;
   const token = jwt.sign({ _id: user._id.toString() }, "drippingwet");
