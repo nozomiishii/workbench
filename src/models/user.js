@@ -40,6 +40,12 @@ const userSchema = new mongoose.Schema({
   ],
 });
 
+userSchema.virtual("tasks", {
+  ref: "Task",
+  localField: "_id",
+  foreignField: "owner",
+});
+
 userSchema.method.toJSON = function () {
   const user = this;
   const userObject = user.toObject();
@@ -54,8 +60,10 @@ userSchema.methods.generateAuthToken = async function () {
   const user = this;
   const token = jwt.sign({ _id: user._id.toString() }, "drippingwet");
 
+  console.log(token);
   user.tokens = user.tokens.concat({ token });
   await user.save();
+
   return token;
 };
 
@@ -71,6 +79,7 @@ userSchema.statics.findByCredentials = async (email, password) => {
   if (!isMatch) {
     throw new Error("Unable to login");
   }
+  console.log("works");
   return user;
 };
 
@@ -83,6 +92,12 @@ userSchema.pre("save", async function (next) {
 
   console.log("works");
 
+  next();
+});
+
+userSchema.pre("remove", async function (next) {
+  const user = this;
+  await Task.deleteMany({ owner: user._id });
   next();
 });
 
