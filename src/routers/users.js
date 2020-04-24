@@ -1,29 +1,21 @@
 const express = require("express");
 const User = require("../models/user");
+const auth = require("../middleware/auth");
 const router = new express.Router();
 
 router.post("/users", async (req, res) => {
   const user = new User(req.body);
   try {
     await user.save();
-    res.status(201).send(user);
+    const token = await user.generateAuthToken();
+    res.status(201).send({ user, token });
   } catch (err) {
     res.status(400).send(err);
   }
 });
 
-router.post("/users/signup", async (req, res) => {
-  const user = new User(req.body);
-  if (!user) {
-    try {
-      await user.save();
-      res.status(201).send(user);
-    } catch (err) {
-      console.error(err);
-      res.status(400).send();
-    }
-  }
-  redirect("/users/login");
+router.get("/users/me", auth, async (req, res) => {
+  res.send(req.user);
 });
 
 router.post("/users/login", async (req, res) => {
