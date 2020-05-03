@@ -1,32 +1,29 @@
 {
   "name": "workbench",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "express": "^4.17.1",
-    "jsonwebtoken": "^8.5.1",
-    "mongodb": "^3.5.6",
-    "mongoose": "^5.9.9",
-    "validator": "^13.0.0"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.3"
-  },
+  "repository": "git@github.com:nozomiishii/workbench.git",
+  "author": "Nozomi Ishii <non.ankt@gmail.com>",
+  "license": "MIT",
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "nodemon src/index.js"
+    "start": "react-scripts start"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nozomiishii/workbench.git"
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "^3.4.1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/nozomiishii/workbench/issues"
-  },
-  "homepage": "https://github.com/nozomiishii/workbench#readme"
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }
