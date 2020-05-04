@@ -37,8 +37,6 @@ const Login = () => {
           name="password"
           value={formFields.password}
           onChange={handleInput}
-          type="password"
-          placeholder="password"
         />
       </Form>
     </PageLayout>
