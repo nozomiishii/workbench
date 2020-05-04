@@ -1,14 +1,30 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+const largeStyles = ({ large }) => {
+  if (large) {
+    return css`
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 1.5rem;
+    `;
+  } else {
+    return css`
+      padding: 8px;
+      border-radius: 4px;
+      font-size: 1rem;
+    `;
+  }
+};
 
 const Button = styled.button`
   color: white;
-  background: black;
+  background: ${({ secondary }) => (secondary ? "blue" : "red")};
   font-weight: bold;
   box-shadow: none;
   border: none;
   width: 100%;
   display: block;
-  white-space: none;
+  ${largeStyles}
   &:disabled {
     background: #eee;
     color: #666;
