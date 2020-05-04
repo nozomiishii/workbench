@@ -16,7 +16,7 @@ const largeStyles = ({ large }) => {
   }
 };
 
-const Button = styled.button`
+export const Button = styled.button`
   color: white;
   background: ${({ secondary }) => (secondary ? "blue" : "red")};
   font-weight: bold;
@@ -30,5 +30,3 @@ const Button = styled.button`
     color: #666;
   }
 `;
-
-export { Button };
