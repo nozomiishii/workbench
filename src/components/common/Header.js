@@ -25,6 +25,7 @@ const Menu = styled.nav`
   top: initial;
 `;
 
+// custom Link not included 'isActive'
 const Link = ({ isActive, children, ...props }) => (
   <ReactRouterDomLink {...props}>{children}</ReactRouterDomLink>
 );
