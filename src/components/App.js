@@ -6,6 +6,9 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 
 const GlobalStyle = createGlobalStyle`
+  *{
+    box-sizing: border-box;
+  }
   body{
     background: white;
     min-height: 100vh;
