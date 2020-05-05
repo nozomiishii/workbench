@@ -27,6 +27,7 @@ const Menu = styled.nav`
   left: 0;
   padding: 8px;
   border-bottom: 3px solid ${({ theme }) => theme.secondary};
+  background: ${(p) => p.theme.backGroundColor};
   @media (min-width: 768px) {
     display: flex;
     position: relative;
@@ -52,7 +53,7 @@ const StyledLink = styled(Link)`
   margin: auto 0;
   font-weight: ${({ isActive }) => (isActive ? "bold" : "normal")};
   text-decoration: ${({ isActive }) => (isActive ? "underline" : "none")};
-  color: black;
+  color: ${(p) => p.theme.fontColor};
 `;
 
 const MobileMenuIcon = styled.div`
@@ -64,7 +65,7 @@ const MobileMenuIcon = styled.div`
   }
   > div {
     height: 3px;
-    background: black;
+    background: ${(p) => p.theme.fontColor};
     margin: 5px;
     width: 100%;
   }

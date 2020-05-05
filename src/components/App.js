@@ -13,10 +13,10 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
   body{
-    background: white;
+    background: ${(p) => p.theme.backGroundColor};
     min-height: 100vh;
     margin: 0;
-    color: black;
+    color: ${(p) => p.theme.fontColor};
     font-family: 'Kaushan Script'
   }
 `;

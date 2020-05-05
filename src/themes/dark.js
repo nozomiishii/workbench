@@ -1,7 +1,7 @@
 const theme = {
   id: "dark",
   primary: "black",
-  secondary: "midnightblue",
+  secondary: "#f8049c",
   backGroundColor: "black",
   fontColor: "white",
 };
