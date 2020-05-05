@@ -1,15 +1,21 @@
 import React from "react";
-import { PageLayout } from "../components";
-import contacts from "../db/contacts";
-import { Card } from "../components";
+import { contacts, profile } from "../db";
+import { PageLayout, Card, Avatar } from "../components";
+import styled from "styled-components";
 
 console.log(contacts);
+
+const Header = styled.div`
+  text-align: center;
+`;
 
 const Contact = () => {
   return (
     <PageLayout>
-      <h1>Contact Page</h1>
-
+      <Header>
+        <h1>Contact Page</h1>
+        <Avatar imgURL={profile.url} crossOrigin="anonymous" />
+      </Header>
       {contacts.map(({ name, imgURL, phone, email }) => {
         return (
           <Card
