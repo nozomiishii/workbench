@@ -12,6 +12,7 @@ const PasswordInputWapper = styled.div`
 const PasswordInputStyled = styled(Input).attrs(() => ({
   type: "password",
   placeholder: "password",
+  autoComplete: "on",
 }))`
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
