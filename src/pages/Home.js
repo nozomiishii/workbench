@@ -1,5 +1,15 @@
 import React from "react";
 import { PageLayout, Note } from "../components";
+import styled from "styled-components";
+
+const Notes = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  > * {
+    margin: 5px;
+  }
+`;
 
 const Home = () => {
   return (
@@ -12,13 +22,14 @@ const Home = () => {
         voluptas accusantium error nulla iste animi consequuntur. Necessitatibus
         sapiente voluptatum obcaecati quaerat!
       </p>
-      <Note>
-        <h1>note</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita,
-          rem.
-        </p>
-      </Note>
+      <Notes>
+        <Note
+          title="note"
+          memo="Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita,
+          rem."
+        />
+        <Note />
+      </Notes>
     </PageLayout>
   );
 };

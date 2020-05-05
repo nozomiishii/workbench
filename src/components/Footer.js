@@ -10,10 +10,9 @@ const Wrapper = styled.footer`
 `;
 
 export const Footer = () => {
-  const date = new Date();
   return (
     <Wrapper>
-      <p>©{date.getFullYear()}</p>
+      <p>©{new Date().getFullYear()}</p>
     </Wrapper>
   );
 };

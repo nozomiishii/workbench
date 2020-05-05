@@ -7,6 +7,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   padding: 20px;
   border: 2px solid #111;
+  font-family: "Indie Flower", cursive;
   h1 {
     border-bottom: 1px solid #eee;
   }
@@ -16,6 +17,11 @@ const Wrapper = styled.div`
   }
 `;
 
-export const Note = ({ children }) => {
-  return <Wrapper>{children}</Wrapper>;
+export const Note = ({ title = "title", memo = "memo..." }) => {
+  return (
+    <Wrapper>
+      <h1>{title}</h1>
+      <p>{memo}</p>
+    </Wrapper>
+  );
 };
