@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, ThemeProvider } from "styled-components";
 
 import Login from "./pages/Login";
 import Home from "./pages/Home";
+
+import LightTheme from "../themes/light";
+import DarkTheme from "../themes/dark";
 
 const GlobalStyle = createGlobalStyle`
   *{
@@ -19,8 +22,16 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const App = () => {
+  const [theme, setTheme] = useState(LightTheme);
   return (
-    <>
+    <ThemeProvider
+      theme={{
+        ...theme,
+        setTheme: () => {
+          setTheme((s) => (s.id === "light" ? DarkTheme : LightTheme));
+        },
+      }}
+    >
       <GlobalStyle />
       <BrowserRouter>
         <Switch>
@@ -28,7 +39,7 @@ const App = () => {
           <Route path="/Login" component={Login} />
         </Switch>
       </BrowserRouter>
-    </>
+    </ThemeProvider>
   );
 };
 

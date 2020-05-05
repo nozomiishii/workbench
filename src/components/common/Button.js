@@ -18,7 +18,8 @@ const largeStyles = ({ large }) => {
 
 export const Button = styled.button`
   color: white;
-  background: ${({ secondary }) => (secondary ? "#30cfd0" : "#330867")};
+  background: ${(props) =>
+    props.secondary ? props.theme.secondary : props.theme.primary};
   font-weight: bold;
   box-shadow: none;
   border: none;
