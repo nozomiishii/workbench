@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { PageLayout, Input, PasswordInput, Button } from "../common";
+import { PageLayout, Input, PasswordInput, Button, Spinner } from "../common";
 import styled from "styled-components";
 
 const Form = styled.form`
@@ -48,19 +48,24 @@ const Login = () => {
     <PageLayout>
       <h1>Login</h1>
       <Form onSubmit={handleSubmit}>
-        <Input
-          name="username"
-          placeholder="Username"
-          value={formFields.username}
-          onChange={handleInput}
-          type="text"
-        />
-        <PasswordInput
-          name="password"
-          value={formFields.password}
-          onChange={handleInput}
-        />
-
+        {loading ? (
+          <Spinner />
+        ) : (
+          <>
+            <Input
+              name="username"
+              placeholder="Username"
+              value={formFields.username}
+              onChange={handleInput}
+              type="text"
+            />
+            <PasswordInput
+              name="password"
+              value={formFields.password}
+              onChange={handleInput}
+            />
+          </>
+        )}
         <Button large type="submit" disabled={loading}>
           {loading ? "loading..." : "Login"}
         </Button>
