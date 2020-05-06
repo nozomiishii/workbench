@@ -3,21 +3,22 @@ import styled from "styled-components";
 import { Input, PageLayout, Button, Spinner } from "../components";
 
 const Form = styled.form`
-  padding: 20px 0;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  padding: 20px 0;
 `;
 
 const Layout = styled(PageLayout)`
-  font-family: "Source Sans Pro", sans-serif;
   color: white;
-  font-weight: 300;
   background: #50a3a2;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 300;
   width: 100%;
   height: 100%;
 `;
 
+const userIsRegistered = false;
 let timeout;
 export const Login = () => {
   const [login, setLogin] = useState(false);
@@ -43,9 +44,23 @@ export const Login = () => {
       {login && <Spinner />}
       <Form onSubmit={handleSubmit}>
         <Input type="text" placeholder="Username" />
-        <Input type="password" placeholder="Password" autoComplete="off" />
+        <Input
+          name="password"
+          type="password"
+          placeholder="Password"
+          autoComplete="off"
+        />
+        {!userIsRegistered && (
+          <Input
+            name="confirmPassword"
+            type="password"
+            placeholder="Confirm Password"
+            autoComplete="off"
+          />
+        )}
+
         <Button type="submit" disabled={login}>
-          Login
+          {userIsRegistered ? "Login" : "Resister"}
         </Button>
       </Form>
     </Layout>
