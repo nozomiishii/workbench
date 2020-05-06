@@ -11,7 +11,7 @@ const Notes = styled.div`
   }
 `;
 
-const Home = () => {
+export const Home = () => {
   return (
     <PageLayout>
       <p>
@@ -33,5 +33,3 @@ const Home = () => {
     </PageLayout>
   );
 };
-
-export default Home;

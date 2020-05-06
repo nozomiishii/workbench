@@ -9,7 +9,11 @@ const Header = styled.div`
   text-align: center;
 `;
 
-const Contact = () => {
+// const str = "1";
+
+// console.log(+str);
+
+export const Contact = () => {
   return (
     <PageLayout>
       <Header>
@@ -30,5 +34,3 @@ const Contact = () => {
     </PageLayout>
   );
 };
-
-export default Contact;

@@ -9,6 +9,7 @@ const Wrapper = styled.header`
   width: 100%;
   position: fixed;
   top: 0;
+  z-index: 10;
 `;
 
 const Title = styled.div`
@@ -37,6 +38,9 @@ export const Header = () => {
       </StyledLink>
       <StyledLink to="/contact" isActive={pathname === "/contact"}>
         CONTACT
+      </StyledLink>
+      <StyledLink to="/emojipedia" isActive={pathname === "/emojipedia"}>
+        EMOJIPEDIA
       </StyledLink>
     </Wrapper>
   );
