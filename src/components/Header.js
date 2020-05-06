@@ -38,7 +38,8 @@ export const Header = () => {
       </StyledLink>
       <StyledLink to="/contact">CONTACT</StyledLink>
       <StyledLink to="/emojipedia">EMOJIPEDIA</StyledLink>
-      <StyledLink to="/login">login</StyledLink>
+      <StyledLink to="/playground">PLAYGROUND</StyledLink>
+      <StyledLink to="/login">LOGIN</StyledLink>
     </Wrapper>
   );
 };

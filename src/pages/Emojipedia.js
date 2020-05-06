@@ -5,7 +5,6 @@ import { emojipedia } from "../db/emojipedia";
 import styled from "styled-components";
 
 const Layout = styled(PageLayout)`
-  font-family: "Montserrat", sans-serif;
   font-weight: 400;
   line-height: 1.666;
   background: #c0d2d4;

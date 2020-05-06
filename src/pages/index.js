@@ -2,3 +2,4 @@ export * from "./Contact";
 export * from "./Home";
 export * from "./Emojipedia";
 export * from "./Login";
+export * from "./Playground";

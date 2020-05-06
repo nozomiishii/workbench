@@ -59,7 +59,7 @@ const Btn = styled(Button)`
 export const Entry = ({ emoji, name, meaning }) => {
   const [fullContent, setFullContent] = useState(false);
   const summary = `${meaning.substring(0, 100)}...`;
-  console.log(summary.length);
+  // console.log(summary.length);
   return (
     <Term>
       <dt>
