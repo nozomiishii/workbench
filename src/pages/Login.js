@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Input, PageLayout, Button } from "../components";
+import { Input, PageLayout, Button, Spinner } from "../components";
 
 const Form = styled.form`
   padding: 20px 0;
@@ -18,13 +18,35 @@ const Layout = styled(PageLayout)`
   height: 100%;
 `;
 
+let timeout;
 export const Login = () => {
+  const [login, setLogin] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLogin(true);
+    timeout = setTimeout(() => {
+      setLogin(false);
+    }, 2000);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (timeout) {
+        clearTimeout(timeout);
+      }
+    };
+  }, []);
+
   return (
     <Layout>
-      <Form>
-        <Input />
-        <Input />
-        <Button>Login</Button>
+      {login && <Spinner />}
+      <Form onSubmit={handleSubmit}>
+        <Input type="text" placeholder="Username" />
+        <Input type="password" placeholder="Password" autoComplete="off" />
+        <Button type="submit" disabled={login}>
+          Login
+        </Button>
       </Form>
     </Layout>
   );

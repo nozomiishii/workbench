@@ -11,7 +11,7 @@ export const Button = styled.button`
   width: 250px;
   font-size: 18px;
   &:disabled {
-    background: #eee;
+    background: #888;
     color: #666;
   }
 `;
