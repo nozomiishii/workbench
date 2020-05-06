@@ -10,12 +10,12 @@ const Content = styled.main`
   padding: 20px 0;
 `;
 
-export const PageLayout = ({ children }) => {
+export const PageLayout = ({ children, ...props }) => {
   return (
-    <>
+    <div {...props}>
       <Header />
       <Content>{children}</Content>
       <Footer />
-    </>
+    </div>
   );
 };
