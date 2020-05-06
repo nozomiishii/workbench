@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Link, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Wrapper = styled.header`
   background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
@@ -16,32 +16,29 @@ const Title = styled.div`
   margin: auto auto auto 0;
 `;
 
-const CustomLink = ({ isActive, children, ...props }) => (
-  <Link {...props}>{children}</Link>
-);
-
-const StyledLink = styled(CustomLink)`
+const activeClassName = "nav-item-active";
+const StyledLink = styled(NavLink).attrs({ activeClassName })`
   padding: 4px;
   margin: auto 0;
-  font-weight: ${(p) => (p.isActive ? "bold" : "normal")};
-  text-decoration: ${(p) => (p.isActive ? "underline" : "none")};
+  font-weight: normal;
+  text-decoration: none;
   color: black;
+  &.${activeClassName} {
+    font-weight: bold;
+    text-decoration: underline;
+  }
 `;
 
 export const Header = () => {
-  const { pathname } = useLocation();
   return (
     <Wrapper>
       <Title>Keeper App</Title>
-      <StyledLink to="/" isActive={pathname === "/"}>
+      <StyledLink to="/" exact>
         HOME
       </StyledLink>
-      <StyledLink to="/contact" isActive={pathname === "/contact"}>
-        CONTACT
-      </StyledLink>
-      <StyledLink to="/emojipedia" isActive={pathname === "/emojipedia"}>
-        EMOJIPEDIA
-      </StyledLink>
+      <StyledLink to="/contact">CONTACT</StyledLink>
+      <StyledLink to="/emojipedia">EMOJIPEDIA</StyledLink>
+      <StyledLink to="/login">login</StyledLink>
     </Wrapper>
   );
 };

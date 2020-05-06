@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { Home, Contact, Emojipedia } from "./pages";
+import { Home, Contact, Emojipedia, Login } from "./pages";
 
 import { createGlobalStyle } from "styled-components";
 
@@ -21,6 +21,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route path="/contact" component={Contact} />
           <Route path="/emojipedia" component={Emojipedia} />
+          <Route path="/login" component={Login} />
         </Switch>
       </BrowserRouter>
     </div>

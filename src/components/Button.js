@@ -1,10 +1,15 @@
 import styled from "styled-components";
 
 export const Button = styled.button`
-  color: white;
-  background: #9adf66;
-  width: 100%;
-  display: block;
+  appearance: none;
+  outline: 0;
+  background-color: white;
+  border: 0;
+  padding: 10px 15px;
+  color: #50a3a2;
+  border-radius: 3px;
+  width: 250px;
+  font-size: 18px;
   &:disabled {
     background: #eee;
     color: #666;
