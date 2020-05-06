@@ -1,13 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Input, PageLayout, Button, Spinner } from "../components";
-
-const Form = styled.form`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  padding: 20px 0;
-`;
+import { PageLayout, Spinner, Form } from "../components";
 
 const Layout = styled(PageLayout)`
   color: white;
@@ -41,28 +34,13 @@ export const Login = () => {
 
   return (
     <Layout>
+      <h1>Hello!!</h1>
       {login && <Spinner />}
-      <Form onSubmit={handleSubmit}>
-        <Input type="text" placeholder="Username" />
-        <Input
-          name="password"
-          type="password"
-          placeholder="Password"
-          autoComplete="off"
-        />
-        {!userIsRegistered && (
-          <Input
-            name="confirmPassword"
-            type="password"
-            placeholder="Confirm Password"
-            autoComplete="off"
-          />
-        )}
-
-        <Button type="submit" disabled={login}>
-          {userIsRegistered ? "Login" : "Resister"}
-        </Button>
-      </Form>
+      <Form
+        handleSubmit={handleSubmit}
+        userIsRegistered={userIsRegistered}
+        login={login}
+      />
     </Layout>
   );
 };
