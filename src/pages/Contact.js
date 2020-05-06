@@ -3,7 +3,7 @@ import { contacts, profile } from "../db";
 import { PageLayout, Card, Avatar } from "../components";
 import styled from "styled-components";
 
-console.log(contacts);
+// console.log(contacts);
 
 const Header = styled.div`
   text-align: center;

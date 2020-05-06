@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const Wrapper = styled.div`
+export const Div = styled.div`
   width: 20vw;
   display: flex;
   flex-direction: column;
@@ -19,9 +19,9 @@ const Wrapper = styled.div`
 
 export const Note = ({ title = "title", memo = "memo..." }) => {
   return (
-    <Wrapper>
+    <Div>
       <h1>{title}</h1>
       <p>{memo}</p>
-    </Wrapper>
+    </Div>
   );
 };

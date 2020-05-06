@@ -1,6 +1,7 @@
 import React from "react";
-import { PageLayout, Note } from "../components";
 import styled from "styled-components";
+import { PageLayout, Note } from "../components";
+import { notes as noteData } from "../db";
 
 const Notes = styled.div`
   display: flex;
@@ -12,6 +13,9 @@ const Notes = styled.div`
 `;
 
 export const Home = () => {
+  const notes = noteData.map(({ key, title, content }) => (
+    <Note key={key} title={title} memo={content} />
+  ));
   return (
     <PageLayout>
       <p>
@@ -22,14 +26,7 @@ export const Home = () => {
         voluptas accusantium error nulla iste animi consequuntur. Necessitatibus
         sapiente voluptatum obcaecati quaerat!
       </p>
-      <Notes>
-        <Note
-          title="note"
-          memo="Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita,
-          rem."
-        />
-        <Note />
-      </Notes>
+      <Notes>{notes}</Notes>
     </PageLayout>
   );
 };
