@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { Button } from "./Button";
 
 const Term = styled.div`
   text-align: center;
@@ -50,7 +51,14 @@ const Term = styled.div`
   }
 `;
 
+const Btn = styled(Button)`
+  width: 120px;
+  height: 40px;
+`;
+
 export const Entry = ({ emoji, name, meaning }) => {
+  const [fullContent, setFullContent] = useState(false);
+  const summary = `${meaning.substring(0, 99)}...`;
   return (
     <Term>
       <dt>
@@ -59,7 +67,8 @@ export const Entry = ({ emoji, name, meaning }) => {
         </span>
         <span>{name}</span>
       </dt>
-      <dd>{meaning}</dd>
+      <dd>{fullContent ? meaning : summary}</dd>
+      <Btn onClick={() => setFullContent((s) => !s)}>More</Btn>
     </Term>
   );
 };

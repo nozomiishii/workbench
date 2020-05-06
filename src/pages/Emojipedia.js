@@ -1,3 +1,4 @@
+// import React, { useState } from "react";
 import React from "react";
 import { PageLayout, Entry } from "../components";
 import { emojipedia } from "../db/emojipedia";
@@ -32,9 +33,9 @@ const Dictionary = styled.dl`
 `;
 
 export const Emojipedia = () => {
-  const entris = emojipedia.map(({ id, emoji, name, meaning }) => (
-    <Entry key={id} emoji={emoji} name={name} meaning={meaning} />
-  ));
+  const entris = emojipedia.map(({ id, emoji, name, meaning }) => {
+    return <Entry key={id} emoji={emoji} name={name} meaning={meaning} />;
+  });
 
   return (
     <Layout>

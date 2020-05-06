@@ -5,3 +5,4 @@ export * from "./Note";
 export * from "./Card";
 export * from "./Avatar";
 export * from "./Entry";
+export * from "./Button";
