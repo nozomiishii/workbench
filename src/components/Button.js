@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Button = styled.button`
-  appearance: none;
   outline: 0;
   background-color: white;
   border: 0;
@@ -13,5 +12,8 @@ export const Button = styled.button`
   &:disabled {
     background: #888;
     color: #666;
+  }
+  &:active {
+    background: #888;
   }
 `;
