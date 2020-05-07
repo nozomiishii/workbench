@@ -6,8 +6,8 @@ export const Playground = () => {
   return (
     <PageLayout>
       <h1>Playground</h1>
-      <Counter />
       <CurrentTimer />
+      <Counter />
     </PageLayout>
   );
 };
