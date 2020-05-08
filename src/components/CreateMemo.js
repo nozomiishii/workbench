@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const Form = styled.form`
@@ -36,12 +36,38 @@ const Form = styled.form`
   }
 `;
 
-export const CreateMemo = () => {
+export const CreateMemo = (props) => {
+  const [memo, setMemo] = useState({ title: "", content: "" });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setMemo((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    props.addMemo(memo);
+    setMemo({ title: "", content: "" });
+  };
   return (
-    <Form>
-      <input name="title" placeholder="Title" />
-      <textarea name="content" placeholder="Take a note..." rows="3" />
-      <button>Add</button>
+    <Form onSubmit={handleSubmit}>
+      <input
+        onChange={handleChange}
+        name="title"
+        placeholder="Title"
+        value={memo.title}
+      />
+      <textarea
+        onChange={handleChange}
+        name="content"
+        placeholder="Take a note..."
+        rows="3"
+        value={memo.content}
+      />
+      <button type="submit">Add</button>
     </Form>
   );
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { PageLayout, Note, CreateMemo } from "../components";
 import { notes as noteData } from "../db";
@@ -13,8 +13,14 @@ const Notes = styled.div`
 `;
 
 export const Home = () => {
-  const notes = noteData.map(({ key, title, content }) => (
-    <Note key={key} title={title} memo={content} />
+  const [memos, setMemos] = useState([...noteData]);
+
+  const addMemo = (memo) => {
+    setMemos((prev) => [...prev, memo]);
+  };
+
+  const notes = memos.map(({ title, content }, index) => (
+    <Note key={index} title={title} memo={content} />
   ));
   return (
     <PageLayout>
@@ -26,7 +32,7 @@ export const Home = () => {
         voluptas accusantium error nulla iste animi consequuntur. Necessitatibus
         sapiente voluptatum obcaecati quaerat!
       </p>
-      <CreateMemo />
+      <CreateMemo addMemo={addMemo} />
       <Notes>{notes}</Notes>
     </PageLayout>
   );
