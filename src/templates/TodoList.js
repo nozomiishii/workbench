@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { AppLayout } from "../components";
+import { AppLayout, List } from "../components";
 
 const Container = styled.div`
   width: 100%;
@@ -51,12 +51,6 @@ const Button = styled.button`
   }
 `;
 
-const Li = styled.li`
-  text-align: left;
-  position: relative;
-  padding: 0.5rem;
-`;
-
 export const TodoList = () => {
   const [lists, setLists] = useState([]);
   const [list, setList] = useState("");
@@ -83,7 +77,11 @@ export const TodoList = () => {
           </Button>
         </Form>
         <div>
-          <ul>{lists && lists.map((list) => <Li key={list}>{list}</Li>)}</ul>
+          <ul>
+            {lists.map((list) => (
+              <List key={list} text={list} />
+            ))}
+          </ul>
         </div>
       </Container>
     </AppLayout>

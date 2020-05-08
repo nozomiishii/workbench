@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { PageLayout, Note } from "../components";
+import { PageLayout, Note, CreateMemo } from "../components";
 import { notes as noteData } from "../db";
 
 const Notes = styled.div`
@@ -26,6 +26,7 @@ export const Home = () => {
         voluptas accusantium error nulla iste animi consequuntur. Necessitatibus
         sapiente voluptatum obcaecati quaerat!
       </p>
+      <CreateMemo />
       <Notes>{notes}</Notes>
     </PageLayout>
   );
