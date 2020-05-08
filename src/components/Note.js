@@ -17,11 +17,12 @@ export const Div = styled.div`
   }
 `;
 
-export const Note = ({ title = "title", memo = "memo..." }) => {
+export const Note = ({ title = "title", memo = "memo...", deleteMemo, id }) => {
   return (
     <Div>
       <h1>{title}</h1>
       <p>{memo}</p>
+      <button onClick={() => deleteMemo(id)}>DELETE</button>
     </Div>
   );
 };

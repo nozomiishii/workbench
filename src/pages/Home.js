@@ -19,9 +19,16 @@ export const Home = () => {
     setMemos((prev) => [...prev, memo]);
   };
 
-  const notes = memos.map(({ title, content }, index) => (
-    <Note key={index} title={title} memo={content} />
-  ));
+  const deleteMemo = (id) => {
+    console.log(id);
+    return setMemos((prev) => {
+      return prev.filter((item, index) => {
+        return index !== id;
+      });
+    });
+    // console.log(memos);
+  };
+
   return (
     <PageLayout>
       <p>
@@ -33,7 +40,18 @@ export const Home = () => {
         sapiente voluptatum obcaecati quaerat!
       </p>
       <CreateMemo addMemo={addMemo} />
-      <Notes>{notes}</Notes>
+      <Notes>
+        {memos &&
+          memos.map(({ title, content }, index) => (
+            <Note
+              key={index}
+              title={title}
+              memo={content}
+              deleteMemo={deleteMemo}
+              id={index}
+            />
+          ))}
+      </Notes>
     </PageLayout>
   );
 };
