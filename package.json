@@ -1,0 +1,8 @@
+{
+  "name": "workbench",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:nozomiishii/workbench.git",
+  "author": "Nozomi Ishii <non.ankt@gmail.com>",
+  "license": "MIT"
+}
