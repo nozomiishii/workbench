@@ -1,3 +1,8 @@
-type Drink = [string, boolean, number];
+class Vehicle {
+  drive(): void {
+    console.log("chugga chugga");
+  }
+}
 
-const pepsi: Drink = ["blown", true, 49];
+const vehicle = new Vehicle();
+vehicle.drive();
