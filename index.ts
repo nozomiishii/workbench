@@ -1,3 +1,3 @@
-const add = (a: number, b: number): number => {
-  return a + b;
-};
+type Drink = [string, boolean, number];
+
+const pepsi: Drink = ["blown", true, 49];
