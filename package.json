@@ -6,7 +6,9 @@
   "author": "Nozomi Ishii <non.ankt@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.19.2"
+    "@types/faker": "^4.1.11",
+    "axios": "^0.19.2",
+    "faker": "^4.1.0"
   },
   "devDependencies": {
     "typescript": "^3.8.3"
