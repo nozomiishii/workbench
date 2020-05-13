@@ -36,13 +36,27 @@ class User {
   }
 }
 
-class Admin extends User {}
+class Admin extends User {
+  deleteUser(user: any) {
+    users = users.filter((u) => {
+      // console.log("u.username", u.username);
+      // console.log("user.username", user.username);
+      return u.username !== user.username;
+    });
+  }
+}
 
 const userOne = new User("mario", "mario@gmail");
 const userTwo = new User("chun-li", "chun-li@gmail");
 
 const userThree = new Admin("shaun", "shuan@netninja.com");
 
-userOne.login().logout().incScore().incScore();
+// userOne.login().logout().incScore().incScore();
 
-console.log(userOne, userTwo, userThree);
+// console.log(userOne, userTwo, userThree);
+
+let users = [userOne, userTwo, userThree];
+
+userThree.deleteUser(userTwo);
+
+console.log(users);

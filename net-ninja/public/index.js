@@ -50,10 +50,20 @@ var Admin = /** @class */ (function (_super) {
     function Admin() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
+    Admin.prototype.deleteUser = function (user) {
+        users = users.filter(function (u) {
+            // console.log("u.username", u.username);
+            // console.log("user.username", user.username);
+            return u.username !== user.username;
+        });
+    };
     return Admin;
 }(User));
 var userOne = new User("mario", "mario@gmail");
 var userTwo = new User("chun-li", "chun-li@gmail");
 var userThree = new Admin("shaun", "shuan@netninja.com");
-userOne.login().logout().incScore().incScore();
-console.log(userOne, userTwo, userThree);
+// userOne.login().logout().incScore().incScore();
+// console.log(userOne, userTwo, userThree);
+var users = [userOne, userTwo, userThree];
+userThree.deleteUser(userTwo);
+console.log(users);
