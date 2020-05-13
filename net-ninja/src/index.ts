@@ -13,7 +13,18 @@
 // userOne.login();
 
 class User {
-  constructor() {}
+  username: string;
+  email: string;
+  constructor(username: string, email: string) {
+    this.username = username;
+    this.email = email;
+  }
+  login() {
+    console.log(`${this.username} just logged in`);
+  }
 }
 
-const userOne = new User();
+const userOne = new User("mario", "mario@gmail");
+const userTwo = new User("chun-li", "chun-li@gmail");
+
+console.log(userOne, userTwo);

@@ -1,4 +1,3 @@
-"use strict";
 // const userOne = {
 //   username: "ryu",
 //   email: "ryu@ninga.uk",

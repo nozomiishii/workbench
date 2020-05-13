@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node src/index.ts"
+    "start": "tsc -w",
+    "node": "ts-node src/index.ts"
   },
   "dependencies": {
     "concurrently": "^5.2.0",
