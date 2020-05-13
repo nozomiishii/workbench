@@ -47,21 +47,22 @@ var User = /** @class */ (function () {
 }());
 var Admin = /** @class */ (function (_super) {
     __extends(Admin, _super);
-    function Admin() {
-        return _super !== null && _super.apply(this, arguments) || this;
+    function Admin(username, email, title) {
+        var _this = _super.call(this, username, email) || this;
+        _this.title = title;
+        return _this;
     }
     Admin.prototype.deleteUser = function (user) {
-        users = users.filter(function (u) {
-            // console.log("u.username", u.username);
-            // console.log("user.username", user.username);
-            return u.username !== user.username;
+        users = users.filter(function (_a) {
+            var username = _a.username;
+            return username !== user.username;
         });
     };
     return Admin;
 }(User));
 var userOne = new User("mario", "mario@gmail");
 var userTwo = new User("chun-li", "chun-li@gmail");
-var userThree = new Admin("shaun", "shuan@netninja.com");
+var userThree = new Admin("shaun", "shuan@netninja.com", "black-belt-ninja");
 // userOne.login().logout().incScore().incScore();
 // console.log(userOne, userTwo, userThree);
 var users = [userOne, userTwo, userThree];
