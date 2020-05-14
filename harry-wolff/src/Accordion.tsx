@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 interface AccordionProps {
   children: React.ReactNode;
-  preview: string;
+  preview: React.ReactNode;
 }
 
 interface AccordionState {
