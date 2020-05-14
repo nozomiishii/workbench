@@ -1,10 +1,11 @@
 import React from "react";
-import { Form } from "./components/Form";
+import { CustomForm } from "./components/Form";
 
 function App() {
   return (
     <div className="App">
-      <Form />
+      <h1>form</h1>
+      <CustomForm onSubmit={() => console.log("work")} />
     </div>
   );
 }
