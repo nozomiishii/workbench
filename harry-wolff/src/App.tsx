@@ -1,6 +1,6 @@
 import React from "react";
 import { Header, Footer } from "./components/Layouts";
-import Exercises from "./components/Exercises";
+import { Exercises } from "./components/Exercises/index";
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
