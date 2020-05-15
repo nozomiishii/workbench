@@ -1,63 +1,19 @@
-// const userOne = {
-//   username: "ryu",
-//   email: "ryu@ninga.uk",
-//   login(): void {
-//     console.log("the user logged in");
-//   },
-//   logout(): void {
-//     console.log("the user logged out");
-//   },
-// };
+let greet: Function;
 
-// console.log(userOne.email, userOne.username);
-// userOne.login();
+greet = () => {
+  console.log("hello, again");
+};
 
-class User {
-  username: string;
-  email: string;
-  score: number;
-  constructor(username: string, email: string) {
-    this.username = username;
-    this.email = email;
-    this.score = 0;
-  }
-  login() {
-    console.log(`${this.username} just logged in`);
-    return this;
-  }
-  logout() {
-    console.log(`${this.username} just logged out`);
-    return this;
-  }
-  incScore() {
-    this.score += 1;
-    console.log(`${this.username} has a score of ${this.score}`);
-    return this;
-  }
-}
+const add = (a: number, b: number, c: number | string = 10) => {
+  console.log(a + b);
+  console.log(c);
+};
 
-class Admin extends User {
-  title: string;
-  constructor(username: string, email: string, title: string) {
-    super(username, email);
-    this.title = title;
-  }
-  deleteUser(user: any) {
-    users = users.filter(({ username }) => username !== user.username);
-  }
-}
+add(5, 20);
 
-const userOne = new User("mario", "mario@gmail");
-const userTwo = new User("chun-li", "chun-li@gmail");
+const minus = (a: number, b: number): number => {
+  return a - b;
+};
 
-const userThree = new Admin("shaun", "shuan@netninja.com", "black-belt-ninja");
-
-// userOne.login().logout().incScore().incScore();
-
-// console.log(userOne, userTwo, userThree);
-
-let users = [userOne, userTwo, userThree];
-
-userThree.deleteUser(userTwo);
-
-console.log(users);
+let result = minus(560, 5);
+console.log(result);
