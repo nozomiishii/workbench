@@ -1,8 +1,22 @@
 import React from "react";
+import styled from "styled-components";
+
+const StyledForm = styled.form`
+  margin: 0 auto;
+  width: 60%;
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  padding: 5vw;
+  > * {
+    margin: 5px;
+    padding: 10px;
+  }
+`;
 
 export const Form = () => {
   return (
-    <form>
+    <StyledForm>
       <p>Please Login</p>
       <input type="text" placeholder="username" />
       <input
@@ -11,6 +25,6 @@ export const Form = () => {
         autoComplete="new-password"
       />
       <button>Login</button>
-    </form>
+    </StyledForm>
   );
 };

@@ -1,7 +1,8 @@
 import React from "react";
-import { Header, Footer } from "./components/Layouts";
+import { Header } from "./components/Layouts";
 import { Exercises } from "./components/Exercises/index";
 import { createGlobalStyle } from "styled-components";
+import { Form } from "./components/Form";
 
 const GlobalStyle = createGlobalStyle`
   body{
@@ -17,7 +18,7 @@ function App() {
       <GlobalStyle />
       <Header />
       <Exercises />
-      <Footer />
+      <Form />
     </>
   );
 }
