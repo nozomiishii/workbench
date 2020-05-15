@@ -1,12 +1,24 @@
 import React from "react";
-import { CustomForm } from "./components/Form";
+import { Header, Footer } from "./components/Layouts";
+import Exercises from "./components/Exercises";
+import { createGlobalStyle } from "styled-components";
+
+const GlobalStyle = createGlobalStyle`
+  body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+`;
 
 function App() {
   return (
-    <div className="App">
-      <h1>form</h1>
-      <CustomForm onSubmit={() => console.log("work")} />
-    </div>
+    <>
+      <GlobalStyle />
+      <Header />
+      <Exercises />
+      <Footer />
+    </>
   );
 }
 
