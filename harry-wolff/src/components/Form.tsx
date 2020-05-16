@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { login } from "./Login";
 
 const StyledForm = styled.form`
   margin: 0 auto;
@@ -17,27 +18,52 @@ const StyledForm = styled.form`
 export const Form = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const onSubmit = (e: any) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const onSubmit = async (e: any) => {
     e.preventDefault();
-    alert("todo");
+    setError("");
+
+    setIsLoading(true);
+    try {
+      await login({ username, password });
+      setIsLoggedIn(true);
+    } catch (error) {
+      setError("Incorrect username or password");
+    }
+
+    setIsLoading(false);
   };
   return (
-    <StyledForm onSubmit={onSubmit}>
-      <p>Please Login</p>
-      <input
-        type="text"
-        placeholder="username"
-        value={username}
-        onChange={(e) => setUsername(e.currentTarget.value)}
-      />
-      <input
-        type="password"
-        placeholder="password"
-        autoComplete="new-password"
-        value={password}
-        onChange={(e) => setPassword(e.currentTarget.value)}
-      />
-      <button>Login</button>
-    </StyledForm>
+    <>
+      {isLoggedIn ? (
+        <>
+          <h1>hello {username}</h1>{" "}
+          <button onClick={() => setIsLoggedIn(false)}>Logout</button>
+        </>
+      ) : (
+        <StyledForm onSubmit={onSubmit}>
+          {error && <p>{error}</p>}
+          <p>Please Login</p>
+          <input
+            type="text"
+            placeholder="username"
+            value={username}
+            onChange={(e) => setUsername(e.currentTarget.value)}
+          />
+          <input
+            type="password"
+            placeholder="password"
+            autoComplete="new-password"
+            value={password}
+            onChange={(e) => setPassword(e.currentTarget.value)}
+          />
+          <button type="submit" disabled={isLoading}>
+            {isLoading ? "Logging in ..." : "Log in"}
+          </button>
+        </StyledForm>
+      )}
+    </>
   );
 };
