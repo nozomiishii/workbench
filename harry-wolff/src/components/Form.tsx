@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useReducer } from "react";
 import styled from "styled-components";
 import { login } from "./Login";
 
@@ -15,32 +15,80 @@ const StyledForm = styled.form`
   }
 `;
 
+function loginReducer(state: any, action: any) {
+  switch (action.type) {
+    case "field": {
+      return {
+        ...state,
+        [action.field]: action.value,
+      };
+    }
+    case "login": {
+      return {
+        ...state,
+        isLoading: true,
+        error: "",
+      };
+    }
+    case "success": {
+      return {
+        ...state,
+        isLoggedIn: true,
+      };
+    }
+    case "error": {
+      return {
+        ...state,
+        error: "Incorrect username or password",
+        isLoading: false,
+        username: "",
+        password: "",
+      };
+    }
+    case "logout": {
+      return {
+        ...state,
+        isLoggedIn: false,
+        username: "",
+        password: "",
+      };
+    }
+    default:
+      break;
+  }
+  return state;
+}
+
+const initialState = {
+  username: "",
+  password: "",
+  isLoading: false,
+  error: "",
+  isLoggedIn: false,
+};
+
 export const Form = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [state, dispatch] = useReducer(loginReducer, initialState);
+
+  const { username, password, isLoading, error, isLoggedIn } = state;
+
   const onSubmit = async (e: any) => {
     e.preventDefault();
-    setError("");
 
-    setIsLoading(true);
+    dispatch({ type: "login" });
     try {
       await login({ username, password });
-      setIsLoggedIn(true);
+      dispatch({ type: "success" });
     } catch (error) {
-      setError("Incorrect username or password");
+      dispatch({ type: "error" });
     }
-
-    setIsLoading(false);
   };
   return (
     <>
       {isLoggedIn ? (
         <>
           <h1>hello {username}</h1>{" "}
-          <button onClick={() => setIsLoggedIn(false)}>Logout</button>
+          <button onClick={() => dispatch({ type: "logout" })}>Logout</button>
         </>
       ) : (
         <StyledForm onSubmit={onSubmit}>
@@ -50,14 +98,26 @@ export const Form = () => {
             type="text"
             placeholder="username"
             value={username}
-            onChange={(e) => setUsername(e.currentTarget.value)}
+            onChange={(e) =>
+              dispatch({
+                type: "field",
+                field: "username",
+                value: e.currentTarget.value,
+              })
+            }
           />
           <input
             type="password"
             placeholder="password"
             autoComplete="new-password"
             value={password}
-            onChange={(e) => setPassword(e.currentTarget.value)}
+            onChange={(e) =>
+              dispatch({
+                type: "field",
+                field: "password",
+                value: e.currentTarget.value,
+              })
+            }
           />
           <button type="submit" disabled={isLoading}>
             {isLoading ? "Logging in ..." : "Log in"}
