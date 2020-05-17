@@ -1,17 +1,28 @@
-interface Person {
-  name: string;
-  age: number;
-  greet(phrase: string): void;
+//
+
+class Car {
+  drive() {
+    console.log("Driving....");
+  }
 }
 
-let user1;
+class Truck {
+  drive() {
+    console.log("Driving a track...");
+  }
+  loadCargo(amount: number) {
+    console.log("Loading cargo..." + amount);
+  }
+}
 
-user1 = {
-  name: "max",
-  age: 30,
-  greet(phrase: string) {
-    console.log(phrase + " " + this.name);
-  },
+type Vehicle = Car | Truck;
+
+const v1 = new Truck();
+
+const useVehicle = (vehicle: Vehicle) => {
+  if ("loadCargo" in vehicle) {
+    vehicle.loadCargo(1000);
+  }
 };
 
-user1.greet("hey");
+useVehicle(v1);
