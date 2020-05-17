@@ -1,23 +1,17 @@
-class Department {
+interface Person {
   name: string;
-  private employees: string[] = [];
-
-  constructor(n: string) {
-    this.name = n;
-  }
-  describe(this: Department) {
-    console.log("Department: " + this.name);
-  }
-  addEmployee(employee: string) {
-    this.employees.push(employee);
-  }
-
-  printEmployeeInfo() {
-    console.log(this.employees.length);
-    console.log(this.employees);
-  }
+  age: number;
+  greet(phrase: string): void;
 }
 
-const nozomi = new Department("nozomi");
+let user1;
 
-console.log(nozomi.describe());
+user1 = {
+  name: "max",
+  age: 30,
+  greet(phrase: string) {
+    console.log(phrase + " " + this.name);
+  },
+};
+
+user1.greet("hey");
