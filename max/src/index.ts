@@ -1,22 +1,22 @@
-interface lengthy {
-  length: number;
-}
+class DataStorage<T> {
+  private data: T[] = [];
 
-function countAndDescribe<T extends lengthy>(element: T) {
-  let descriptionText = "got no value";
-  if (element.length === 1) {
-    descriptionText = "got 1 element.";
-  } else if (element.length > 1) {
-    descriptionText = "got " + element.length + " elements";
+  addItem(item: T) {
+    this.data.push(item);
   }
-  return [element, descriptionText];
-}
 
-function extractAncConvert<T extends object, U extends keyof T>(
-  obj: T,
-  key: U
-) {
-  return `Value: ${obj[key]}`;
-}
+  removeItem(item: T) {
+    this.data.splice(this.data.indexOf(item), 1);
+  }
 
-extractAncConvert({ name: "nozomi" }, "name");
+  getItems() {
+    return [...this.data];
+  }
+}
+const textStorage = new DataStorage<string>();
+
+textStorage.addItem("nozomi");
+textStorage.addItem("mocha");
+textStorage.removeItem("mocha");
+
+console.log(textStorage.getItems());
