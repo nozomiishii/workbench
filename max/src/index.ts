@@ -1,22 +1,38 @@
-class DataStorage<T> {
-  private data: T[] = [];
+class Boat {
+  @testDecorator
+  color: string = "red";
 
-  addItem(item: T) {
-    this.data.push(item);
+  get formattedColor(): string {
+    return `this boats color is ${this.color}`;
   }
 
-  removeItem(item: T) {
-    this.data.splice(this.data.indexOf(item), 1);
-  }
-
-  getItems() {
-    return [...this.data];
+  @logError("oops boot was sunk")
+  pilot(): void {
+    throw new Error();
+    console.log("swish");
   }
 }
-const textStorage = new DataStorage<string>();
 
-textStorage.addItem("nozomi");
-textStorage.addItem("mocha");
-textStorage.removeItem("mocha");
+function testDecorator(target: any, key: string) {
+  console.log(target);
+  console.log(key);
+}
 
-console.log(textStorage.getItems());
+function logError(errorMessage: string) {
+  return function (target: any, key: string, desc: PropertyDescriptor): void {
+    const method = desc.value;
+    desc.value = function () {
+      try {
+        method();
+      } catch (err) {
+        console.error(errorMessage);
+      }
+    };
+    // console.log("target ", target);
+    // console.log("key: ", key);
+  };
+}
+
+// testDecorator(Bo at.prototype, "pilot");
+
+// new Boat().pilot();
