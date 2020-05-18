@@ -1,19 +1,12 @@
-let greet: Function;
+const ancher = document.querySelector("a")!;
 
-greet = () => {
-  console.log("hello, again");
-};
+console.log(ancher.href);
 
-const add = (a: number, b: number, c: number | string = 10) => {
-  console.log(a + b);
-  console.log(c);
-};
+const form = document.getElementById("form-btn") as HTMLFontElement;
+// const form = document.querySelector('form')
 
-add(5, 20);
+const btn = document.querySelector("form-btn") as HTMLButtonElement;
 
-const minus = (a: number, b: number): number => {
-  return a - b;
-};
-
-let result = minus(560, 5);
-console.log(result);
+form.addEventListener("submit", (e: Event) => {
+  e.preventDefault();
+});

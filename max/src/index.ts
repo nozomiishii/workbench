@@ -1,38 +1,32 @@
-class Boat {
-  @testDecorator
-  color: string = "red";
-
-  get formattedColor(): string {
-    return `this boats color is ${this.color}`;
-  }
-
-  @logError("oops boot was sunk")
-  pilot(): void {
-    throw new Error();
-    console.log("swish");
-  }
-}
-
-function testDecorator(target: any, key: string) {
-  console.log(target);
-  console.log(key);
-}
-
-function logError(errorMessage: string) {
-  return function (target: any, key: string, desc: PropertyDescriptor): void {
-    const method = desc.value;
-    desc.value = function () {
-      try {
-        method();
-      } catch (err) {
-        console.error(errorMessage);
-      }
-    };
-    // console.log("target ", target);
-    // console.log("key: ", key);
+function Logger(logString: string) {
+  return function (target: object) {
+    console.log(logString);
+    console.log(target);
   };
 }
 
-// testDecorator(Bo at.prototype, "pilot");
+function WithTemplate(template: string, hookId: string) {
+  console.log("outer template");
+  return function (target: any) {
+    console.log("inner template");
+    const hookEl = document.getElementById(hookId);
+    const p = new target();
+    if (hookEl) {
+      hookEl.innerHTML = template;
+      hookEl.querySelector("h1")!.textContent = p.name;
+    }
+  };
+}
 
-// new Boat().pilot();
+@Logger("LOGGING - Person")
+@WithTemplate("<h1>My Person Object</h1>", "app")
+class Person {
+  name: string;
+  constructor() {
+    this.name = "nozomi";
+  }
+}
+
+const nozomi = new Person();
+
+console.log(nozomi);
