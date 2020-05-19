@@ -116,3 +116,65 @@ const p = new Printer();
 
 const button = document.querySelector("button") as HTMLButtonElement;
 button.addEventListener("click", p.showMessage);
+
+//----
+
+interface ValidatorConfig {
+  [property: string]: {
+    [validatableProp: string]: string[];
+  };
+}
+
+const resisteredValidator: ValidatorConfig = {};
+
+function Required(target: object, key: string) {
+  resisteredValidator[target.constructor.name] = {
+    [key]: ["required"],
+  };
+}
+
+function PositiveNumber(target: object, key: string) {
+  resisteredValidator[target.constructor.name] = {
+    [key]: ["positive"],
+  };
+}
+
+function validate(target: any, key: string) {
+  const objValidatorConfig = resisteredValidator[target.constructor.name];
+  if (!objValidatorConfig) {
+    return true;
+  }
+  for (const prop in objValidatorConfig) {
+    for (const validator in objValidatorConfig[prop]) {
+      switch (validator) {
+        case "required":
+          return !!target[prop];
+        case "positive":
+          return target[prop] > 0;
+      }
+    }
+  }
+}
+
+class Course {
+  title: string;
+  price: number;
+  constructor(t: string, p: number) {
+    this.title = t;
+    this.price = p;
+  }
+}
+
+const courseform = document.querySelector("form") as HTMLFormElement;
+
+courseform.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const titleEl = document.getElementById("title") as HTMLInputElement;
+  const priceEl = document.getElementById("price") as HTMLInputElement;
+
+  const title = titleEl.value;
+  const price = +priceEl.value;
+
+  const createCourse = new Course(title, price);
+  console.log(createCourse);
+});
