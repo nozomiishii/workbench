@@ -35,7 +35,38 @@ function autoBindThis(target: object, key: string, desc: PropertyDescriptor) {
     },
   });
 }
+//////////////////////////////////////////////////////////////////////////////////
 
+class ProjectList {
+  template: HTMLTemplateElement;
+  host: HTMLDivElement;
+  element: HTMLElement;
+  constructor(private type: "active" | "finished") {
+    this.template = document.getElementById(
+      "project-list"
+    ) as HTMLTemplateElement;
+    this.host = document.getElementById("app") as HTMLDivElement;
+
+    const node = document.importNode(this.template.content, true);
+    this.element = node.firstElementChild as HTMLElement;
+    this.element.id = `${this.type}-projects`;
+    this.attach();
+    this.renderContent();
+  }
+
+  private renderContent() {
+    const listId = `${this.type}-projects-list`;
+    this.element.querySelector("ul")!.id = listId;
+    this.element.querySelector("h2")!.textContent =
+      this.type.toUpperCase() + " PROJECTS";
+  }
+
+  private attach() {
+    this.host.insertAdjacentElement("beforeend", this.element);
+  }
+}
+
+//////////////////////////////////////////////////////////////////////////////////
 class ProjectInput {
   template: HTMLTemplateElement;
   host: HTMLDivElement;
@@ -124,3 +155,5 @@ class ProjectInput {
 }
 
 const project = new ProjectInput();
+const activeList = new ProjectList("active");
+const finishedList = new ProjectList("finished");
