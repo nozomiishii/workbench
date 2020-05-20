@@ -81,6 +81,7 @@ function validate(input: Validatable) {
 }
 
 function autoBindThis(target: object, key: string, desc: PropertyDescriptor) {
+  console.log(target, key);
   const method = desc.value;
   return (desc.value = {
     get() {
