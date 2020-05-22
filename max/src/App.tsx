@@ -1,14 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import TodoList from "./components/TodoList";
+import NewTodo from "./components/NewTodo";
+import { Todo } from "./todo.model";
 
-function App() {
-  const todos = [{ id: "t1", text: "Finish the course" }];
+const App = () => {
+  const [todos, setTodos] = useState<Todo[]>([]);
+  const addTodo = (text: string) => {
+    let uid = Math.random().toString();
+    setTodos((prev) => [...prev, { id: uid, text }]);
+    console.log(todos);
+  };
 
+  const deleteTodo = (todoId: string) => {
+    setTodos((prev) => prev.filter((item) => item.id !== todoId));
+  };
   return (
     <div className="App">
-      <TodoList items={todos} />
+      <NewTodo onAddTodo={addTodo} />
+      <TodoList items={todos} onDeleteTodo={deleteTodo} />
     </div>
   );
-}
+};
 
 export default App;
