@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
+// import App from "./App";
+import UseRef from "./UseRef";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <UseRef />
   </React.StrictMode>,
   document.getElementById("root")
 );
