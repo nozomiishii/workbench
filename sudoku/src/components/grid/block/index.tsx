@@ -7,7 +7,7 @@ interface Props {
 }
 
 const Block: React.FC<Props> = ({ colIndex, rowIndex }) => {
-  return <Container data-cy={`block-${rowIndex} - ${colIndex}`}></Container>;
+  return <Container data-cy={`block-${rowIndex} - ${colIndex}`}>0</Container>;
 };
 
 export default Block;
