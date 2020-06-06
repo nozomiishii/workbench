@@ -1,15 +1,19 @@
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useState } from "react";
 import "./App.css";
 
+interface HelloProps {
+  increment?: () => void;
+}
+const Hello: React.FC<HelloProps> = ({ increment }) => {
+  return <button onClick={increment}>Hello</button>;
+};
+
 const App: React.FC = () => {
-  const inputRef = useRef<HTMLInputElement>(null);
-  useLayoutEffect(() => {
-    console.log(inputRef.current?.getBoundingClientRect());
-  }, []);
+  const [count, setCount] = useState(0);
   return (
     <div className="App">
-      <h1>hello</h1>
-      <input ref={inputRef} type="text" />
+      <Hello increment={() => setCount(count + 1)} />
+      <div>count: {count}</div>
     </div>
   );
 };
