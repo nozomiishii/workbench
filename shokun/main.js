@@ -15,7 +15,7 @@ function tabSwitch(event) {
   //クッリクイベントのターゲットに状態の追加
   event.target.classList.add('active');
 
-  const index = tabsAry.indexOf(this);
+  const index = tabsAry.indexOf(event.target);
   // クリックしたcontentクラスにshowクラスを追加する
   document.getElementsByClassName('content')[index].classList.add('show');
 }
