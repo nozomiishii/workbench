@@ -1,4 +1,5 @@
 import createDataContext from './createDataContext';
+import jsonServer from '../api/jsonServer';
 
 interface BlogPost {
   title: string;
@@ -9,7 +10,7 @@ interface BlogContext {
   addBlogPost: () => void;
 }
 type Action = {
-  type: 'add_blogpost' | 'delete_blogpost' | 'edit_blogpost';
+  type: 'add_blogpost' | 'delete_blogpost' | 'edit_blogpost' | 'get_blogpost';
   payload: any;
 };
 const initialvalue = {
@@ -19,6 +20,8 @@ const initialvalue = {
 
 const blogReducer = (state: BlogPost[], action: Action) => {
   switch (action.type) {
+    case 'get_blogpost':
+      return [...action.payload];
     case 'edit_blogpost':
       return state.map((blogPost) => {
         if (blogPost.id === action.payload.id) {
@@ -44,8 +47,9 @@ const blogReducer = (state: BlogPost[], action: Action) => {
 };
 
 const addBlogPost = (dispatch: any) => {
-  return (title: string, content: string, callback?: () => void) => {
-    dispatch({ type: 'add_blogpost', payload: { title, content } });
+  return async (title: string, content: string, callback?: () => void) => {
+    await jsonServer.post('/blogposts', { title, content });
+    // dispatch({ type: 'add_blogpost', payload: { title, content } });
     if (callback) {
       callback();
     }
@@ -55,6 +59,14 @@ const addBlogPost = (dispatch: any) => {
 const deleteBlogPost = (dispatch: any) => {
   return (id: number) => {
     dispatch({ type: 'delete_blogpost', payload: id });
+  };
+};
+
+const getBlogPosts = (dispatch: any) => {
+  return async () => {
+    const response = await jsonServer.get('/blogposts');
+    console.log('__________________________________', response.data);
+    dispatch({ type: 'get_blogpost', payload: response.data });
   };
 };
 
@@ -77,6 +89,6 @@ const editBlogPost = (dispatch: any) => {
 
 export const { Context, Provider } = createDataContext(
   blogReducer,
-  { addBlogPost, deleteBlogPost, editBlogPost },
-  [{ title: 'test', content: 'test content', id: 1 }]
+  { addBlogPost, deleteBlogPost, editBlogPost, getBlogPosts },
+  []
 );
