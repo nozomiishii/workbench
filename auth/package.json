@@ -1,5 +1,5 @@
 {
-  "name": "albums",
+  "name": "auth",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -10,7 +10,6 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "axios": "^0.19.2",
     "react": "16.11.0",
     "react-native": "0.62.2"
   },
