@@ -1,15 +1,37 @@
 const functions = require('firebase-functions');
+const admin = require('firebase-admin');
+admin.initializeApp();
 
-exports.randomNumber = functions.https.onRequest((req, res) => {
-  const number = Math.round(Math.random() * 100);
-  res.send(number.toString());
+exports.newUserSignup = functions.auth.user().onCreate((user) => {
+  console.log('user created', user.email, user.uid);
+  return admin.firestore().collection('users').doc(user.uid).set({
+    email: user.email,
+    upvotedOn: [],
+  });
 });
 
-exports.toTheNozomis = functions.https.onRequest((req, res) => {
-  res.redirect('https://www.nozomiishii.jp');
+exports.userDeleted = functions.auth.user().onDelete((user) => {
+  console.log('user deleted', user.email, user.uid);
+  const doc = admin.firestore().collection('users').doc(user.uid);
+  return doc.delete();
 });
 
-exports.sayHello = functions.https.onCall((data, context) => {
-  const name = data.name;
-  return `hello, ${name}`;
+// adding request
+exports.addRequest = functions.https.onCall((data, context) => {
+  if (!context.auth) {
+    throw new functions.https.HttpsError(
+      'unauthenticated',
+      'only authenticated users can add requests'
+    );
+  }
+  if (data.text.length > 30) {
+    throw new functions.https.HttpsError(
+      'invalid-argument',
+      'request must be no more than 30 characters long'
+    );
+  }
+  return admin.firestore().collection('requests').add({
+    text: data.text,
+    upvates: 0,
+  });
 });
