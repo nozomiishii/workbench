@@ -1,7 +1,8 @@
 const functions = require('firebase-functions');
 
 exports.randomNumber = functions.https.onRequest((req: any, res: any) => {
-  const number = Math.round(Math.random() * 100);
+  const number = Math.floor(Math.random() * 100);
+  console.log(number);
   res.send(number.toString());
 });
 
