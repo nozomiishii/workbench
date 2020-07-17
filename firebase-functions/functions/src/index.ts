@@ -9,3 +9,8 @@ exports.randomNumber = functions.https.onRequest((req: any, res: any) => {
 exports.toTheDojo = functions.https.onRequest((req: any, res: any) => {
   res.redirect('https://www.nozomiishii.jp');
 });
+
+// callable functions
+exports.sayHello = functions.https.onCall((data: any, context: any) => {
+  return `hello, ninjas`;
+});
