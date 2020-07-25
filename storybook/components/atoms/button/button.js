@@ -12,6 +12,7 @@ const Button = ({ children, href, onClick, variant }) => {
   if (!href)
     return (
       <StyledButton onClick={onClick} variant={variant}>
+        <IconPlus />
         {children}
       </StyledButton>
     );
