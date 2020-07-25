@@ -8,19 +8,42 @@ import IconPlus from '../../../assets/images/icons/plus.svg';
 import IconUser from '../../../assets/images/icons/user.svg';
 import IconX from '../../../assets/images/icons/x.svg';
 
-const Button = ({ children, href, onClick, variant }) => {
+const icons = {
+  bag: IconBag,
+  cart: IconCart,
+  plus: IconPlus,
+  user: IconUser,
+  x: IconX,
+};
+
+const Button = ({ children, href, onClick, variant, icon }) => {
   if (!href)
     return (
       <StyledButton onClick={onClick} variant={variant}>
-        <IconPlus />
+        {icon && <ButtonIcon name={icon} />}
         {children}
       </StyledButton>
     );
   return (
     <StyledLinkButton href={href} variant={variant}>
+      {icon && <ButtonIcon name={icon} />}
       {children}
     </StyledLinkButton>
   );
+};
+
+const ButtonIcon = ({ name }) => {
+  if (icons[name] === undefined) return null;
+  const Icon = icons[name];
+  return (
+    <span className='button__icon'>
+      <Icon />
+    </span>
+  );
+};
+
+ButtonIcon.propTypes = {
+  name: string.isRequired,
 };
 
 Button.proptypes = {
@@ -28,6 +51,7 @@ Button.proptypes = {
   href: string,
   onClick: func,
   variant: string,
+  icon: string,
 };
 
 Button.defaultProps = {
