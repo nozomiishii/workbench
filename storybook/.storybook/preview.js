@@ -2,6 +2,7 @@ import React from 'react';
 import { addDecorator, configure } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle, themeDefault } from '../components/particles';
+import ApolloWrapper from '../components/particles/apollo/provider';
 
 import { addParameters } from '@storybook/react';
 import { DocsPage, DocsContainer } from '@storybook/addon-docs/blocks';
@@ -16,10 +17,12 @@ addParameters({
 });
 
 const GlobalWrapper = (storyFn) => (
-  <ThemeProvider theme={themeDefault}>
-    <GlobalStyle />
-    {storyFn()}
-  </ThemeProvider>
+  <ApolloWrapper>
+    <ThemeProvider theme={themeDefault}>
+      <GlobalStyle />
+      {storyFn()}
+    </ThemeProvider>
+  </ApolloWrapper>
 );
 
 addDecorator(GlobalWrapper);
