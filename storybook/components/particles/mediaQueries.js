@@ -17,7 +17,7 @@ export const size = {
 };
 
 export const device = {
-  xs: `(min-width: ${size.xs})`,
+  x: `(min-width: ${size.xs})`,
   sm: `(min-width: ${size.sm})`,
   md: `(min-width: ${size.md})`,
   lg: `(min-width: ${size.lg})`,
