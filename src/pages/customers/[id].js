@@ -21,7 +21,7 @@ export default function Home() {
           width={500}
           height={500}
         />
-        <h1 className='mx-auto text-4xl font-bold'>Welcome to Next.js 101!</h1>
+        <h1 className='mx-auto text-4xl font-bold'>Welcome to {id}</h1>
         <Link href='/pageTwo'>
           <a>Go page2</a>
         </Link>
