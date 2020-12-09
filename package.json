@@ -1,18 +1,25 @@
 {
   "name": "workbench",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "css": "tailwind build src/style.css -o dist/style.css"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nozomiishii/workbench.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nozomiishii/workbench/issues"
+  },
+  "homepage": "https://github.com/nozomiishii/workbench#readme",
   "dependencies": {
     "autoprefixer": "^10.0.4",
-    "next": "10.0.3",
     "postcss": "^8.1.14",
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
     "tailwindcss": "^2.0.1"
   }
 }
