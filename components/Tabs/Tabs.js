@@ -1,25 +1,53 @@
-export const Tabs = () => {
+import classNames from 'classnames';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { slugify } from 'utils/slugify';
+
+export const Tabs = ({ children, initialTab }) => {
+  const [current, setCurrent] = useState(children[0].props.label);
+  const router = useRouter();
+
+  const handleClick = (e, tab) => {
+    e.preventDefault();
+    setCurrent(slugify(tab));
+  };
+
+  useEffect(() => {
+    if (initialTab.tab) {
+      setCurrent(initialTab.tab);
+    }
+  }, []);
+
+  useEffect(() => {
+    router.push(`${router.pathname}?tab=${slugify(current)}`, undefined, {
+      shallow: true,
+    });
+  }, [current]);
+
   return (
     <div>
-      <ul className='flex border-b-2 border-green-600'>
-        <li className='mx-1'>Tab 1</li>
-        <li className='mx-1'>Tab 2</li>
-        <li className='mx-1'>Tab 3</li>
+      <ul className='flex border-b-2 border-green-300 md:space-x-0'>
+        {children.map((tab) => {
+          const tabClass = classNames('mx-1', {
+            'bg-blue-500 font-bold border-2 border-blue-500 border-b-0':
+              current === slugify(tab.props.label),
+          });
+          return (
+            <li key={tab.props.label} className={tabClass}>
+              <a onClick={(e) => handleClick(e, tab.props.label)}>
+                {tab.props.label}
+              </a>
+            </li>
+          );
+        })}
       </ul>
       <div>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam culpa
-          ab reprehenderit eveniet molestiae et amet natus itaque commodi ad,
-          rem fugit beatae repellendus earum voluptates, recusandae eaque.
-          Blanditiis ducimus aperiam earum ab adipisci, nobis iusto. Tempora cum
-          non error, et eum consequuntur sed laudantium? Ad itaque adipisci
-          aliquam assumenda temporibus optio expedita quos veritatis libero nisi
-          obcaecati voluptatum odit dolores eius eum blanditiis nostrum culpa
-          sint, suscipit atque sunt sit magnam, et cum. Sit doloremque ad
-          nostrum nemo temporibus exercitationem consequatur repellat
-          perspiciatis esse rem repellendus deserunt illo, vel adipisci in neque
-          ab nisi libero molestias ducimus excepturi nam.
-        </p>
+        {children.map(
+          (item) =>
+            current === slugify(item.props.label) && (
+              <div key={item.props.label}>{item.props.children}</div>
+            )
+        )}
       </div>
     </div>
   );
