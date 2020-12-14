@@ -5,7 +5,7 @@ import App from './App';
 import { getUser } from './getUser';
 
 jest.mock('./getUser.ts');
-const mockGetUser = mocked(getUser, true);
+// const mockGetUser = mocked(getUser, true);
 
 beforeEach(() => render(<App />));
 afterEach(cleanup);
