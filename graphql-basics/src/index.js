@@ -1,9 +1,9 @@
 import { GraphQLServer } from 'graphql-yoga';
 
 const users = [
-  { id: 1, name: 'nozomi', email: 'nozomi@gmail.com' },
-  { id: 2, name: 'waon', email: 'waon@gmail.com' },
-  { id: 3, name: 'mocha', email: 'mocha@gmail.com' },
+  { id: '1', name: 'nozomi', email: 'nozomi@gmail.com' },
+  { id: '2', name: 'waon', email: 'waon@gmail.com' },
+  { id: '3', name: 'mocha', email: 'mocha@gmail.com' },
 ];
 
 const posts = [
@@ -12,17 +12,20 @@ const posts = [
     title: 'aaaa',
     body:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum rem ex, architecto dolor, atque ipsum consequuntur animi cum pariatur cupiditate reprehenderit, eligendi inventore eos? Eligendi rem expedita ullam doloremque placeat.',
+    author: '1',
   },
   {
     id: 2,
     title: 'bbb',
     body: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur, facere?',
+    author: '1',
   },
   {
     id: 3,
     title: 'ccc',
     body:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente tempora iure, omnis officia adipisci libero!',
+    author: '2',
   },
 ];
 
@@ -38,12 +41,14 @@ const typeDefs = `
     name: String!
     email: String!
     age: Int
+    posts:[Post!]!
   }
 
   type Post {
     id: ID!
     title: String!
     body: String!
+    author: User!
   }
 `;
 
@@ -79,6 +84,16 @@ const resolvers = {
         title: 'books',
         body: 'test',
       };
+    },
+  },
+  Post: {
+    author(parent, args, ctx, info) {
+      return users.find((user) => user.id === parent.author);
+    },
+  },
+  User: {
+    posts(parent, args, ctx, info) {
+      return posts.filter((post) => post.author === parent.id);
     },
   },
 };
