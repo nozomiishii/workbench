@@ -1,9 +1,9 @@
 import { GraphQLServer } from 'graphql-yoga';
 
 const users = [
-  { id: '1', name: 'nozomi', email: 'nozomi@gmail.com' },
-  { id: '2', name: 'waon', email: 'waon@gmail.com' },
-  { id: '3', name: 'mocha', email: 'mocha@gmail.com' },
+  { id: '1', name: 'nozomi', email: 'nozomi@gmail.com', comment: '1' },
+  { id: '2', name: 'waon', email: 'waon@gmail.com', comment: '1' },
+  { id: '3', name: 'mocha', email: 'mocha@gmail.com', comment: '2' },
 ];
 
 const posts = [
@@ -29,12 +29,19 @@ const posts = [
   },
 ];
 
+const comments = [
+  { id: '1', text: 'Lorem ipsum dolor sit amet.', author: '1' },
+  { id: '2', text: 'fafds Lorem ipsum dolor sit amet.', author: '1' },
+  { id: '3', text: 'vadvda Lorem ipsum dolor sit amet.', author: '2' },
+];
+
 const typeDefs = `
   type Query{
     users(query:String):[User!]!
     posts(query:String):[Post!]!
     me: User!
     post: Post!
+    comments: [Comment!]!
   }
   type User {
     id: ID!
@@ -42,12 +49,19 @@ const typeDefs = `
     email: String!
     age: Int
     posts:[Post!]!
+    comments: [Comment]
   }
 
   type Post {
     id: ID!
     title: String!
     body: String!
+    author: User!
+  }
+
+  type Comment {
+    id: String!
+    text: String!
     author: User!
   }
 `;
@@ -69,6 +83,9 @@ const resolvers = {
         return users;
       }
       return users.filter((user) => user.name.toLowerCase().includes(args.query.toLowerCase()));
+    },
+    comments() {
+      return comments;
     },
     me() {
       return {
@@ -94,6 +111,14 @@ const resolvers = {
   User: {
     posts(parent, args, ctx, info) {
       return posts.filter((post) => post.author === parent.id);
+    },
+    comments(parent, args, ctx, info) {
+      return comments.filter((comment) => comment.id === parent.comment);
+    },
+  },
+  Comment: {
+    author(parent, args, ctx, info) {
+      return users.find((user) => user.id === parent.author);
     },
   },
 };
