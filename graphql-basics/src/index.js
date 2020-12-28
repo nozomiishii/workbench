@@ -30,9 +30,9 @@ const posts = [
 ];
 
 const comments = [
-  { id: '1', text: 'Lorem ipsum dolor sit amet.', author: '1' },
-  { id: '2', text: 'fafds Lorem ipsum dolor sit amet.', author: '1' },
-  { id: '3', text: 'vadvda Lorem ipsum dolor sit amet.', author: '2' },
+  { id: '1', text: 'Lorem ipsum dolor sit amet.', author: '1', post: '1' },
+  { id: '2', text: 'fafds Lorem ipsum dolor sit amet.', author: '1', post: '1' },
+  { id: '3', text: 'vadvda Lorem ipsum dolor sit amet.', author: '2', post: '1' },
 ];
 
 const typeDefs = `
@@ -43,6 +43,11 @@ const typeDefs = `
     post: Post!
     comments: [Comment!]!
   }
+
+  type Mutation{
+    createUser(name:String!, email: String!, age:Int):User!
+  }
+
   type User {
     id: ID!
     name: String!
@@ -63,6 +68,7 @@ const typeDefs = `
     id: String!
     text: String!
     author: User!
+    post: Post! 
   }
 `;
 
@@ -103,6 +109,11 @@ const resolvers = {
       };
     },
   },
+  Mutation: {
+    createUser(parent, args, ctx, info) {
+      console.log('############👨🏻‍🚀[args]', args);
+    },
+  },
   Post: {
     author(parent, args, ctx, info) {
       return users.find((user) => user.id === parent.author);
@@ -119,6 +130,9 @@ const resolvers = {
   Comment: {
     author(parent, args, ctx, info) {
       return users.find((user) => user.id === parent.author);
+    },
+    post(parent, args, ctx, info) {
+      return posts.find((post) => post.id === parent.post);
     },
   },
 };
