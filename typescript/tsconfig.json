@@ -1,8 +1,0 @@
-{
-  "compilerOptions": {
-    "rootDir": "./src",
-    "outDir": "./dist",
-    "module": "commonjs"
-  },
-  "exclude": ["node_modules"]
-}
