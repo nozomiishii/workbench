@@ -1,0 +1,28 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": ["@typescript-eslint/eslint-plugin"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "react-app",
+    "eslint-config-prettier",
+    "eslint-config-prettier/@typescript-eslint"
+  ],
+  "rules": {
+    "strict": ["error", "never"],
+    "@typescript-eslint/no-var-requires": "off"
+  }
+}
