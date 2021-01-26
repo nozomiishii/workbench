@@ -4,6 +4,16 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import * as dat from 'dat.gui';
 
 const textureLoader = new THREE.TextureLoader();
+const cubeTextureLoader = new THREE.CubeTextureLoader();
+
+const environmentMapTexture = cubeTextureLoader.load([
+  '/textures/environmentMaps/0/px.jpg',
+  '/textures/environmentMaps/0/nx.jpg',
+  '/textures/environmentMaps/0/py.jpg',
+  '/textures/environmentMaps/0/ny.jpg',
+  '/textures/environmentMaps/0/pz.jpg',
+  '/textures/environmentMaps/0/nz.jpg',
+]);
 
 const doorColorTexture = textureLoader.load('/textures/door/color.jpg');
 const doorAlphaTexture = textureLoader.load('/textures/door/alpha.jpg');
@@ -28,20 +38,32 @@ const scene = new THREE.Scene();
 // let wireframe = false;
 // const material = new THREE.MeshMatcapMaterial();
 // material.matcap = matcapTexture;
-const material = new THREE.MeshToonMaterial();
-material.shininess = 100;
+const material = new THREE.MeshStandardMaterial({ side: THREE.DoubleSide });
+material.metalness = 0.7;
+material.roughness = 0.2;
+material.envMap = environmentMapTexture;
 
-// gui.add(material, 'flatShading');
-// gui.add(material, 'wireframe');
-// gui.add(material, 'transparent');
-
-// gui.add(material, 'opacity').min(0.0).max(1.0).step(0.1);
+gui.add(material, 'metalness').min(0.0).max(1.0).step(0.1);
+gui.add(material, 'roughness').min(0.0).max(1.0).step(0.1);
 const sphere = new THREE.Mesh(new THREE.SphereBufferGeometry(0.5, 16, 16), material);
+sphere.geometry.setAttribute(
+  'uv2',
+  new THREE.BufferAttribute(sphere.geometry.attributes.uv.array, 2)
+);
 sphere.position.x = -1.5;
 
 const plane = new THREE.Mesh(new THREE.PlaneBufferGeometry(1, 1, 2, 3), material);
+plane.geometry.setAttribute(
+  'uv2',
+  new THREE.BufferAttribute(plane.geometry.attributes.uv.array, 2)
+);
+
 const torus = new THREE.Mesh(new THREE.TorusBufferGeometry(0.3, 0.2, 16, 32), material);
 torus.position.x = 1.5;
+torus.geometry.setAttribute(
+  'uv2',
+  new THREE.BufferAttribute(torus.geometry.attributes.uv.array, 2)
+);
 
 scene.add(sphere, plane, torus);
 
